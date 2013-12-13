@@ -180,6 +180,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -187,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DurandalBundleConfig.cs" />
+    <Compile Include="App_Start\DurandalConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -206,6 +211,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,14 +224,38 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\flickr.js" />
+    <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\welcome.js" />
+    <Content Include="App\views\detail.html" />
+    <Content Include="App\views\flickr.html" />
+    <Content Include="App\views\shell.html" />
+    <Content Include="App\views\welcome.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\durandal.css" />
+    <Content Include="Content\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\ie10mobile.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\icon.png" />
+    <Content Include="Content\images\ios-startup-image-landscape.png" />
+    <Content Include="Content\images\ios-startup-image-portrait.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\starterkit.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -239,6 +269,28 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Scripts\durandal\activator.js" />
+    <Content Include="Scripts\durandal\app.js" />
+    <Content Include="Scripts\durandal\binder.js" />
+    <Content Include="Scripts\durandal\composition.js" />
+    <Content Include="Scripts\durandal\events.js" />
+    <Content Include="Scripts\durandal\plugins\dialog.js" />
+    <Content Include="Scripts\durandal\plugins\history.js" />
+    <Content Include="Scripts\durandal\plugins\http.js" />
+    <Content Include="Scripts\durandal\plugins\observable.js" />
+    <Content Include="Scripts\durandal\plugins\router.js" />
+    <Content Include="Scripts\durandal\plugins\serializer.js" />
+    <Content Include="Scripts\durandal\plugins\widget.js" />
+    <Content Include="Scripts\durandal\system.js" />
+    <Content Include="Scripts\durandal\transitions\entrance.js" />
+    <Content Include="Scripts\durandal\viewEngine.js" />
+    <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="weyland-config.js" />
+    <Content Include="readme.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -247,8 +299,11 @@
     <Content Include="Scripts\knockout.validation.debug.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\text.js" />
     <Content Include="Scripts\underscore-ko-1.2.2.js" />
     <Content Include="Scripts\underscore-ko-1.2.2.min.js" />
     <Content Include="Scripts\underscore.js" />
@@ -287,6 +342,8 @@
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Durandal\Index.cshtml" />
+    <Content Include="Views\Durandal\_splash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +356,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\durandal\durandal.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore-ko\underscore-ko.d.ts" />
