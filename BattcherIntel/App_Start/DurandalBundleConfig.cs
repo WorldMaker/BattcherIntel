@@ -14,9 +14,8 @@ namespace BattcherIntel {
 		);
 
       bundles.Add(
-        new StyleBundle("~/Content/css")
+        new StyleBundle("~/Content/biacss")
           .Include("~/Content/bootstrap.min.css")
-          .Include("~/Content/bootstrap-responsive.min.css")
           .Include("~/Content/font-awesome.min.css")
 		  .Include("~/Content/durandal.css")
           .Include("~/Content/starterkit.css")
