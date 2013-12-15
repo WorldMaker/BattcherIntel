@@ -46,7 +46,8 @@ export function activate() {
 
         // Accounts
         { route: 'account/login', title: 'Login', moduleId: 'viewmodels/account/login', nav: false },
-        { route: 'account/register', title: 'Register', moduleId: 'viewmodels/account/register', nav: false }
+        { route: 'account/register', title: 'Register', moduleId: 'viewmodels/account/register', nav: false },
+        { route: 'account/registerExternal', title: 'Register', moduleId: 'viewmodels/account/registerExternal', nav: false },
     ]).buildNavigationModel();
 
     return router.activate();

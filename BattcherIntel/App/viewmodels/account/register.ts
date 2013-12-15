@@ -30,7 +30,7 @@ class RegisterViewModel {
                     grant_type: "password",
                     username: this.userName(),
                     password: this.password()
-                }).done(function (data) {
+                }).done(data => {
                         this.registering(false);
 
                         if (data.userName && data.access_token) {
@@ -38,7 +38,7 @@ class RegisterViewModel {
                         } else {
                             this.errors.push("An unknown error occurred.");
                         }
-                    }).fail(function (data) {
+                    }).fail(data => {
                         this.registering(false);
 
                         if (data && data.error_description) {
@@ -47,7 +47,7 @@ class RegisterViewModel {
                             this.errors.push("An unknown error occurred.");
                         }
                     });
-            }).fail(function (data) {
+            }).fail(data => {
                 var errors;
 
                 this.registering(false);

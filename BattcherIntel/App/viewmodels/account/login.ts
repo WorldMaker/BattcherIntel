@@ -23,7 +23,7 @@ class LoginVM {
         }
 
         return dataModel.getExternalLogins(this.returnUrl, true /* generateState */)
-            .done(function (data) {
+            .done(data => {
                 if (typeof (data) === "object") {
                     for (var i = 0; i < data.length; i++) {
                         this.externalLoginProviders.push(new elp.ExternalLoginProviderViewModel(data[i]));
@@ -31,7 +31,7 @@ class LoginVM {
                 } else {
                     this.errors.push("An unknown error occurred.");
                 }
-            }).fail(function () {
+            }).fail(() => {
                 this.errors.push("An unknown error occurred.");
             });
     }
@@ -51,7 +51,7 @@ class LoginVM {
             grant_type: "password",
             username: this.userName(),
             password: this.password()
-        }).done(function (data) {
+        }).done(data => {
                 this.loggingIn(false);
 
                 if (data.userName && data.access_token) {
@@ -59,7 +59,7 @@ class LoginVM {
                 } else {
                     this.errors.push("An unknown error occurred.");
                 }
-            }).fail(function (data) {
+            }).fail(data => {
                 this.loggingIn(false);
 
                 if (data && data.error_description) {
