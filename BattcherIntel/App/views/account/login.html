@@ -1,7 +1,25 @@
 ﻿<h2>Log in</h2>
 
 <div class="row">
-    <section class="col-md-8">
+    <section class="col-md-7">
+        <h4>Use another service to login.</h4>
+        <hr />
+        <!--<div data-bind="visible: loadingExternalLogin">Loading...</div>-->
+        <!--<div data-bind="visible: !loadingExternalLogin()">-->
+        <div data-bind="visible: !hasExternalLogin()">
+            <p>
+                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+        <form class="form-horizontal" role="form" data-bind="visible: hasExternalLogin">
+            <p data-bind="foreach: externalLoginProviders">
+                <button type="submit" class="btn btn-default" data-bind="text: name, attr: { title: 'Log in using your ' + name() + ' account' }, click: login"></button>
+            </p>
+        </form>
+        <!--</div>-->
+    </section>
+    <section class="col-md-5">
         <form class="form-horizontal" role="form">
             <h4>Use a local account to log in.</h4>
             <hr />
@@ -36,23 +54,5 @@
             <p><a href="#account/register">Register</a> if you don't have a local account.</p>
 
         </form>
-    </section>
-    <section class="col-md-4">
-        <h4>Use another service to login.</h4>
-        <hr />
-        <!--<div data-bind="visible: loadingExternalLogin">Loading...</div>-->
-        <!--<div data-bind="visible: !loadingExternalLogin()">-->
-            <div data-bind="visible: !hasExternalLogin()">
-                <p>
-                    There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-                    for details on setting up this ASP.NET application to support logging in via external services.
-                </p>
-            </div>
-            <form class="form-horizontal" role="form" data-bind="visible: hasExternalLogin">
-                <p data-bind="foreach: externalLoginProviders">
-                    <button type="submit" class="btn btn-default" data-bind="text: name, attr: { title: 'Log in using your ' + name() + ' account' }, click: login"></button>
-                </p>
-            </form>
-        <!--</div>-->
     </section>
 </div>
