@@ -40,8 +40,8 @@
     <section class="col-md-4">
         <h4>Use another service to login.</h4>
         <hr />
-        <div data-bind="visible: loadingExternalLogin">Loading...</div>
-        <div data-bind="visible: !loadingExternalLogin()">
+        <!--<div data-bind="visible: loadingExternalLogin">Loading...</div>-->
+        <!--<div data-bind="visible: !loadingExternalLogin()">-->
             <div data-bind="visible: !hasExternalLogin()">
                 <p>
                     There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
@@ -53,6 +53,6 @@
                     <button type="submit" class="btn btn-default" data-bind="text: name, attr: { title: 'Log in using your ' + name() + ' account' }, click: login"></button>
                 </p>
             </form>
-        </div>
+        <!--</div>-->
     </section>
 </div>
