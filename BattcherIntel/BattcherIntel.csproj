@@ -226,7 +226,7 @@
   <ItemGroup>
     <Content Include="App\main.js" />
     <Content Include="App\viewmodels\flickr.js" />
-    <Content Include="App\viewmodels\welcome.js" />
+    <TypeScriptCompile Include="App\viewmodels\welcome.ts" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\flickr.html" />
     <Content Include="App\views\shell.html" />
