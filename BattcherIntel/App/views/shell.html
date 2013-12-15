@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" data-bind="attr: { href: router.navigationModel()[0].hash }">
-                    <i class="icon-briefcase"></i>
+                    <i class="fa fa-briefcase"></i>
                     <span>Battcher Intelligence Agency</span>
                 </a>
             </div>
@@ -21,9 +21,12 @@
                     </li>
                 </ul>
                 <div class="loader navbar-right" data-bind="css: { active: router.isNavigating }">
-                    <i class="icon-spinner icon-2x icon-spin"></i>
+                    <i class="fa fa-spinner fa-2x fa-spin"></i>
                 </div>
-                <form class="navbar-form navbar-right" data-bind="submit:search" role="search">
+                <ul class="nav navbar-nav navbar-right" data-bind="visible: !loggedIn()">
+                    <li><a href="#account/login">Login</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" data-bind="visible: loggedIn, submit:search" role="search">
                     <div class="form-group">
                         <label for="search" class="sr-only">Search</label>
                         <input id="search" type="search" class="form-control" placeholder="Search">

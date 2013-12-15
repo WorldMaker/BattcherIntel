@@ -1,14 +1,18 @@
 ﻿requirejs.config({
+    baseUrl: '/App/',
     paths: {
         'text': '../Scripts/text',
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
         'transitions': '../Scripts/durandal/transitions',
-        'knockout': '../Scripts/knockout-3.0.0'
+        'knockout': '../Scripts/knockout-3.0.0',
+        'knockout.validation': '../Scripts/knockout.validation',
+        'underscore-ko': '../Scripts/underscore-ko'
     }
 });
 
 define('jquery', [], function () { return $; }); // module system hack
+define('ko-validation', ['knockout', 'knockout.validation'], function (ko) { return ko; })
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
     //>>excludeStart("build", true);
