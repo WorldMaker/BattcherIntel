@@ -33,6 +33,33 @@ function getSecurityHeaders(): any {
 }
 
 // Operations
+export function toErrorsArray(data) {
+    var errors = new Array(),
+        items;
+
+    if (!data || !data.message) {
+        return null;
+    }
+
+    if (data.modelState) {
+        for (var key in data.modelState) {
+            items = data.modelState[key];
+
+            if (items.length) {
+                for (var i = 0; i < items.length; i++) {
+                    errors.push(items[i]);
+                }
+            }
+        }
+    }
+
+    if (errors.length === 0) {
+        errors.push(data.message);
+    }
+
+    return errors;
+}
+
 export function archiveSessionStorageToLocalStorage() {
     var backup = {};
 

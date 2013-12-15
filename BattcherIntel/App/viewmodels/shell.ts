@@ -45,7 +45,8 @@ export function activate() {
         { route: 'flickr', moduleId: 'viewmodels/flickr', nav: true, authorize: 'agent' },
 
         // Accounts
-        { route: 'account/login', title: 'Login', moduleId: 'viewmodels/account/login', nav: false }
+        { route: 'account/login', title: 'Login', moduleId: 'viewmodels/account/login', nav: false },
+        { route: 'account/register', title: 'Register', moduleId: 'viewmodels/account/register', nav: false }
     ]).buildNavigationModel();
 
     return router.activate();

@@ -69,10 +69,6 @@ class LoginVM {
                 }
             });
     }
-
-    register() {
-        // TODO: app.navigateToRegister();
-    }
 }
 
 export = LoginVM;
