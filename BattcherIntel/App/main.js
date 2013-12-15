@@ -12,7 +12,7 @@
 });
 
 define('jquery', [], function () { return $; }); // module system hack
-define('ko-validation', ['knockout', 'knockout.validation'], function (ko) { return ko; })
+define('ko-validation', ['knockout', 'knockout.validation'], function (ko) { return ko; });
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
     //>>excludeStart("build", true);
