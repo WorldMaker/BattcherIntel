@@ -225,6 +225,7 @@
   <ItemGroup>
     <Content Include="App\main.js" />
     <Content Include="App\viewmodels\flickr.js" />
+    <Content Include="App\views\account\manage.html" />
     <Content Include="App\views\account\register.html" />
     <Content Include="App\views\account\registerExternal.html" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -250,9 +251,13 @@
     <TypeScriptCompile Include="App\account\model.ts" />
     <TypeScriptCompile Include="App\account\security.ts" />
     <TypeScriptCompile Include="App\main.d.ts" />
+    <TypeScriptCompile Include="App\viewmodels\account\addpassword.ts" />
+    <TypeScriptCompile Include="App\viewmodels\account\changepassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\login.ts" />
+    <TypeScriptCompile Include="App\viewmodels\account\manage.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\register.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\registerExternal.ts" />
+    <TypeScriptCompile Include="App\viewmodels\account\removelogin.ts" />
     <TypeScriptCompile Include="App\viewmodels\welcome.ts" />
     <Content Include="App\views\account\login.html" />
     <Content Include="App\views\detail.html" />

@@ -7,7 +7,7 @@ var registerUrl = "/api/Account/Register";
 var registerExternalUrl = "/api/Account/RegisterExternal";
 var removeLoginUrl = "/api/Account/RemoveLogin";
 var setPasswordUrl = "/api/Account/setPassword";
-var siteUrl = "/";
+export var siteUrl = "/";
 var userInfoUrl = "/api/Account/UserInfo";
 
 // Route operations

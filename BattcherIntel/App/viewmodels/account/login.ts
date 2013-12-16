@@ -22,7 +22,7 @@ class LoginVM {
             this.returnUrl = splat.returnUrl;
         }
 
-        return dataModel.getExternalLogins(this.returnUrl, true /* generateState */)
+        return dataModel.getExternalLogins(dataModel.siteUrl, true /* generateState */)
             .done(data => {
                 if (typeof (data) === "object") {
                     for (var i = 0; i < data.length; i++) {
