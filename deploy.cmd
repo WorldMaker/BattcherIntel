@@ -89,13 +89,13 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 call npm install -g grunt
 call npm install --saveDev
-call grunt
+SET GRUNT_CMD=node "%appdata%\npm\node_modules\kuduSync\bin\grunt"
+call %GRUNT_CMD%
+IF !ERRORLEVEL! NEQ 0 goto error
 
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   popd
 }
-
-IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (

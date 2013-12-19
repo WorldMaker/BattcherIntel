@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattcherIntel", "BattcherIn
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7435FA08-AFDC-4F44-8F92-C1D7F51AC105}"
 	ProjectSection(SolutionItems) = preProject
+		.deployment = .deployment
+		deploy.cmd = deploy.cmd
 		Gruntfile.js = Gruntfile.js
 		package.json = package.json
 	EndProjectSection
