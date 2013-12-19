@@ -1,6 +1,7 @@
 import dataModel = require('../../account/model');
 import elp = require('../../account/externalLoginProvider');
 import ko = require('ko-validation');
+import security = require('../../account/security');
 
 class LoginVM {
     // Private state
@@ -20,6 +21,8 @@ class LoginVM {
     activate(splat: any) {
         if (splat && splat.returnUrl) {
             this.returnUrl = splat.returnUrl;
+        } else {
+            this.returnUrl = '';
         }
 
         return dataModel.getExternalLogins(dataModel.siteUrl, true /* generateState */)
@@ -54,8 +57,8 @@ class LoginVM {
         }).done(data => {
                 this.loggingIn(false);
 
-                if (data.userName && data.access_token) {
-                    // TODO: app.navigateToLoggedIn(data.userName, data.access_token, this.rememberMe());
+            if (data.userName && data.access_token) {
+                security.login(data.userName, data.access_token, this.rememberMe(), this.returnUrl);
                 } else {
                     this.errors.push("An unknown error occurred.");
                 }

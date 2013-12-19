@@ -1,5 +1,6 @@
 import dataModel = require('../../account/model');
 import ko = require('ko-validation');
+import security = require('../../account/security');
 
 class RegisterViewModel {
     // Data
@@ -35,6 +36,7 @@ class RegisterViewModel {
 
                         if (data.userName && data.access_token) {
                             // TODO: app.navigateToLoggedIn(data.userName, data.access_token, false /* persistent */);
+                            security.login(data.userName, data.access_token, false);
                         } else {
                             this.errors.push("An unknown error occurred.");
                         }
