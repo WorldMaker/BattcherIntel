@@ -76,8 +76,8 @@ IF /I "BattcherIntel.sln" NEQ "" (
 :: 2.a. Grunt
 call npm install -g grunt
 call npm install --saveDev
-SET GRUNT_CMD=node "%appdata%\npm\node_modules\kuduSync\bin\grunt"
-call %GRUNT_CMD%
+:: SET GRUNT_CMD=node "%appdata%\npm\node_modules\grunt\bin\grunt"
+call grunt
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build to the temporary path
