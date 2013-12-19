@@ -1,0 +1,9 @@
+{
+  "name": "BattcherIntel",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-durandal": "~0.1.2",
+    "grunt-typescript": "~0.2.7"
+  }
+}

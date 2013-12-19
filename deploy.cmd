@@ -73,13 +73,6 @@ IF /I "BattcherIntel.sln" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-:: 2.a. Grunt
-call npm install -g grunt-cli
-call npm install --saveDev
-SET GRUNT_CMD=node "%appdata%\npm\node_modules\grunt-cli\bin\grunt"
-call %GRUNT_CMD%
-IF !ERRORLEVEL! NEQ 0 goto error
-
 :: 2. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   %MSBUILD_PATH% "%DEPLOYMENT_SOURCE%\BattcherIntel\BattcherIntel.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
@@ -88,6 +81,21 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 )
 
 IF !ERRORLEVEL! NEQ 0 goto error
+
+:: 2.a. Grunt
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  pushd "%DEPLOYMENT_TEMP%"
+)
+
+call npm install -g grunt-cli
+call npm install --saveDev
+SET GRUNT_CMD=node "%appdata%\npm\node_modules\grunt-cli\bin\grunt"
+call %GRUNT_CMD%
+IF !ERRORLEVEL! NEQ 0 goto error
+
+IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  popd
+)
 
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
