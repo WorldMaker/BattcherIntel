@@ -20,12 +20,20 @@
         
         @Styles.Render("~/Content/biacss")
     </head>
-    <body>
-        <div id="applicationHost">
-            @Html.Partial("_splash")
-        </div>
-        
-        @Scripts.Render("~/Scripts/vendor")
+<body>
+    <div id="applicationHost">
+        @Html.Partial("_splash")
+    </div>
+
+    @Scripts.Render("~/Scripts/vendor")
+    @if (Context.IsDebuggingEnabled || !File.Exists(Server.MapPath("~/App/main-build.js")))
+    {
         <script type="text/javascript" src="~/Scripts/require.js" data-main="/App/main"></script>
-    </body>
+    }
+    else
+    {
+        <script type="text/javascript" src="~/App/main-build.js"></script>
+    }
+</body>
+
 </html>

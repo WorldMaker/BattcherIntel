@@ -160,3 +160,6 @@ $RECYCLE.BIN/
 # =================
 BattcherIntel/App/**/*.js
 BattcherIntel/App/**/*.js.map
+
+# Node modules
+node_modules/
