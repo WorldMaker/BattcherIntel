@@ -85,7 +85,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 :: 2.a. Grunt
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   pushd "%DEPLOYMENT_TEMP%"
-}
+)
 
 call npm install -g grunt
 call npm install --saveDev
@@ -95,7 +95,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   popd
-}
+)
 
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
