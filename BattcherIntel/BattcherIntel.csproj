@@ -408,4 +408,10 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <!-- This is a workaround to the fact that Azure deployment currently doesn't support the TypeScript targets file -->
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <Content Include="**\*.ts"/>
+    </ItemGroup>
+  </Target>
 </Project>
