@@ -5,6 +5,7 @@
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
         'transitions': '../Scripts/durandal/transitions',
+        'bootstrap': '../Scripts/bootstrap',
         'jquery': '../Scripts/jquery-2.0.3',
         'knockout': '../Scripts/knockout-3.0.0',
         'knockout.validation': '../Scripts/knockout.validation',

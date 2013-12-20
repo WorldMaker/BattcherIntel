@@ -30,6 +30,7 @@ module.exports = function (grunt) {
                     mainPath: "app/main.js",
                     out: "app/main-built.js",
                     paths: {
+                        'bootstrap': '../Scripts/bootstrap',
                         'jquery': '../Scripts/jquery-2.0.3',
                         'knockout': '../Scripts/knockout-3.0.0',
                         'knockout.validation': '../Scripts/knockout.validation',
@@ -40,6 +41,16 @@ module.exports = function (grunt) {
                     map: {
                         '*': {
                             'underscore': 'lodash.underscore'
+                        }
+                    },
+                    shim: {
+                        'bootstrap': ['jquery'],
+                        'jquery': {
+                            exports: "$"
+                        },
+                        'nprogress': {
+                            deps: ['jquery'],
+                            exports: 'NProgress'
                         }
                     },
 
