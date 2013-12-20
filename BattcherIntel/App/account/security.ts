@@ -1,3 +1,4 @@
+/// <amd-dependency path="underscore-ko"/>
 import dataModel = require('./model');
 import ko = require('knockout');
 import router = require('plugins/router');
@@ -10,8 +11,8 @@ export class UserVM {
         this.name(name);
     }
 
-    isInRole(role: string) {
-        this.roles.contains(role);
+    isInRole(role: string): boolean {
+        return this.roles.contains(role);
     }
 }
 
@@ -35,6 +36,9 @@ export function login(userName, accessToken, persistent, returnHash?: string) {
 }
 
 export function logoff() {
-    dataModel.clearAccessToken();
-    router.navigate('account/login');
+    return dataModel.logout().then(() => {
+        user(null);
+        dataModel.clearAccessToken();
+        router.navigate('account/login');
+    });
 };

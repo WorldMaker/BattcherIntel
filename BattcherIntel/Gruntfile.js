@@ -16,17 +16,31 @@ module.exports = function (grunt) {
                 src: [
                     "app/**/*.js",
                     "app/**/*.html",
+                    "scripts/bootstrap.js",
+                    "scripts/durandal/**/*.*",
+                    "scripts/jquery-2.0.3.js",
                     "scripts/knockout-3.0.0.js",
                     "scripts/knockout.validation.js",
-                    "scripts/durandal/**/*.*"
+                    "scripts/lodash.underscore.js",
+                    "scripts/nprogress.js",
+                    "scripts/underscore-ko.js"
                 ],
                 options: {
                     baseUrl: "app/",
                     mainPath: "app/main.js",
                     out: "app/main-built.js",
                     paths: {
-                        'knockout': '../scripts/knockout-3.0.0',
-                        'knockout.validation': '../scripts/knockout.validation'
+                        'jquery': '../Scripts/jquery-2.0.3',
+                        'knockout': '../Scripts/knockout-3.0.0',
+                        'knockout.validation': '../Scripts/knockout.validation',
+                        'lodash.underscore': '../Scripts/lodash.underscore',
+                        'nprogress': '../Scripts/nprogress',
+                        'underscore-ko': '../Scripts/underscore-ko'
+                    },
+                    map: {
+                        '*': {
+                            'underscore': 'lodash.underscore'
+                        }
                     },
 
                     uglify2: {

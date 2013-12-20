@@ -25,7 +25,6 @@
         @Html.Partial("_splash")
     </div>
 
-    @Scripts.Render("~/Scripts/vendor")
     @if (Context.IsDebuggingEnabled || !File.Exists(Server.MapPath("~/App/main-built.js")))
     {
         <script type="text/javascript" src="~/Scripts/require.js" data-main="/App/main"></script>

@@ -1,6 +1,7 @@
 export import router = require('plugins/router');
 import app = require('durandal/app');
 export import security = require('../account/security');
+import util = require('../util');
 
 // Mix-in for authorization requirement
 interface AuthorizedDurandalRouteConfiguration extends DurandalRouteConfiguration {
@@ -9,13 +10,21 @@ interface AuthorizedDurandalRouteConfiguration extends DurandalRouteConfiguratio
 
 export var loggedIn = security.loggedIn;
 
+export var user = security.user;
+
 export function search() {
     //It's really easy to show a message box.
     //You can add custom options too. Also, it returns a promise for the user's response.
     app.showMessage('Search not yet implemented...');
 }
 
+export function logout() {
+    return security.logoff();
+}
+
 export function activate() {
+    util.subscribeProgress(router.isNavigating);
+
     // If the route has the authorize flag and the user is not logged in => navigate to login view                                
     router.guardRoute = function (instance, instruction: DurandalRouteInstruction) {
         if (sessionStorage["redirectTo"]) {

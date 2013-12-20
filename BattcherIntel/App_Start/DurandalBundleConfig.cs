@@ -7,18 +7,13 @@ namespace BattcherIntel {
       bundles.IgnoreList.Clear();
       AddDefaultIgnorePatterns(bundles.IgnoreList);
 
-	  bundles.Add(
-		new ScriptBundle("~/Scripts/vendor")
-			.Include("~/Scripts/jquery-{version}.js")
-			.Include("~/Scripts/bootstrap.js")
-		);
-
       bundles.Add(
         new StyleBundle("~/Content/biacss")
           .Include("~/Content/bootstrap.min.css")
           .Include("~/Content/font-awesome.min.css")
 		  .Include("~/Content/durandal.css")
           .Include("~/Content/starterkit.css")
+          .Include("~/Content/nprogress.css")
         );
     }
 

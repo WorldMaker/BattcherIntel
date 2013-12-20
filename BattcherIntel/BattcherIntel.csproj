@@ -232,6 +232,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\nprogress.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -241,6 +242,8 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="App_Readme\NProgressjs_README.md" />
+    <Content Include="App_Readme\NProgressjs_LICENSE" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="package.json" />
@@ -253,6 +256,7 @@
     <TypeScriptCompile Include="App\account\model.ts" />
     <TypeScriptCompile Include="App\account\security.ts" />
     <TypeScriptCompile Include="App\main.d.ts" />
+    <TypeScriptCompile Include="App\util.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\addpassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\changepassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\login.ts" />
@@ -307,7 +311,11 @@
     <Content Include="Scripts\durandal\transitions\entrance.js" />
     <Content Include="Scripts\durandal\viewEngine.js" />
     <Content Include="Scripts\durandal\viewLocator.js" />
+    <Content Include="Scripts\lodash.underscore.js" />
+    <Content Include="Scripts\lodash.underscore.min.js" />
     <Content Include="Scripts\modernizr-2.7.1.js" />
+    <Content Include="Scripts\nprogress.js" />
+    <Content Include="Scripts\nprogress.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
@@ -319,6 +327,7 @@
     <Content Include="Scripts\text.js" />
     <Content Include="Scripts\underscore-ko-1.2.2.js" />
     <Content Include="Scripts\underscore-ko-1.2.2.min.js" />
+    <Content Include="Scripts\underscore-ko.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -370,6 +379,7 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\nprogress\NProgress.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore-ko\underscore-ko.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>
@@ -411,7 +421,7 @@
   <!-- This is a workaround to the fact that Azure deployment currently doesn't support the TypeScript targets file -->
   <Target Name="BeforeBuild">
     <ItemGroup>
-      <Content Include="**\*.ts"/>
+      <Content Include="**\*.ts" />
     </ItemGroup>
   </Target>
 </Project>

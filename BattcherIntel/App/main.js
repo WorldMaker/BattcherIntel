@@ -5,14 +5,29 @@
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
         'transitions': '../Scripts/durandal/transitions',
+        'jquery': '../Scripts/jquery-2.0.3',
         'knockout': '../Scripts/knockout-3.0.0',
         'knockout.validation': '../Scripts/knockout.validation',
+        'lodash.underscore': '../Scripts/lodash.underscore',
+        'nprogress': '../Scripts/nprogress',
         'underscore-ko': '../Scripts/underscore-ko'
+    },
+    map: {
+        '*': {
+            'underscore': 'lodash.underscore'
+        }
+    },
+    shim: {
+        'bootstrap': ['jquery'],
+        'jquery': {
+            exports: "$"
+        },
+        'nprogress': {
+            deps: ['jquery'],
+            exports: 'NProgress'
+        }
     }
 });
-
-define('jquery', [], function () { return $; }); // module system hack
-define('ko-validation', ['knockout', 'knockout.validation'], function (ko) { return ko; });
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
     //>>excludeStart("build", true);

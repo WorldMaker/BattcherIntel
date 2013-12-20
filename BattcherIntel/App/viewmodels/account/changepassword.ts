@@ -1,5 +1,6 @@
+/// <amd-dependency path="knockout.validation"/>
 import dataModel = require('../../account/model');
-import ko = require('ko-validation');
+import ko = require('knockout');
 
 class ChangePasswordViewModel {
     constructor(private parent, name) {

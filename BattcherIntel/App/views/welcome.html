@@ -1,7 +1,13 @@
 ﻿<section>
     <h2 data-bind="html: displayName">…</h2>
 
-    <p>Are you here on <abbr>TDY</abbr>? Please login, if so. Otherwise, you are probably in the wrong place.</p>
+    <div data-bind="if: !loggedIn()">
+        <p>Are you here on <abbr>TDY</abbr>? Please login, if so. Otherwise, you are probably in the wrong place.</p>
+    </div>
+
+    <div data-bind="if: loggedIn">
+        <p class="alert alert-info">Use the search in the navigation bar above to unlock a mission ID or mission secret.</p>
+    </div>
 
     <p><small><a href="http://www.argn.com/2005/04/this_is_not_a_game/">This is <em>almost</em> not a game.</a></small></p>
 </section>

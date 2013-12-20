@@ -1,7 +1,9 @@
+/// <amd-dependency path="knockout.validation"/>
 import dataModel = require('../../account/model');
 import elp = require('../../account/externalLoginProvider');
-import ko = require('ko-validation');
+import ko = require('knockout');
 import security = require('../../account/security');
+import util = require('../../util');
 
 class LoginVM {
     // Private state
@@ -17,6 +19,10 @@ class LoginVM {
     errors = ko.observableArray();
     validationErrors = ko.validation.group([this.userName, this.password]);
     loggingIn = ko.observable(false);
+
+    constructor() {
+        util.subscribeProgress(this.loggingIn);
+    }
 
     activate(splat: any) {
         if (splat && splat.returnUrl) {

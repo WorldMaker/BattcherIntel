@@ -20,19 +20,25 @@
                         <a data-bind="attr: { href: hash }, html: title"></a>
                     </li>
                 </ul>
-                <div class="loader navbar-right" data-bind="css: { active: router.isNavigating }">
-                    <i class="fa fa-spinner fa-2x fa-spin"></i>
+                <div class="navbar-right">
+                    <p class="navbar-text">
+                        <span data-bind="visible: !loggedIn()">Waiting for Agent <a href="#account/login" class="navbar-link">Login</a></span>
+                        <span data-bind="visible: loggedIn">Hello, <a href="#account/manage" class="navbar-link"><!-- ko if: loggedIn --><span data-bind="text: user().name()">…</span><!-- /ko --></a></span>
+                    </p>
+                    <ul class="nav navbar-nav">
+                        <li data-bind="visible: !loggedIn()"><a href="#account/login">Login</a></li>
+                    </ul>
+                    <form class="navbar-form" data-bind="visible: loggedIn, submit:search" role="search">
+                        <div class="form-group">
+                            <label for="search" class="sr-only">Search</label>
+                            <input id="search" type="search" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                    <!--<p class="loader navbar-text" data-bind="css: { active: router.isNavigating }">
+                        <i class="fa fa-spinner fa-2x fa-spin"></i>
+                    </p>-->
                 </div>
-                <ul class="nav navbar-nav navbar-right" data-bind="visible: !loggedIn()">
-                    <li><a href="#account/login">Login</a></li>
-                </ul>
-                <form class="navbar-form navbar-right" data-bind="visible: loggedIn, submit:search" role="search">
-                    <div class="form-group">
-                        <label for="search" class="sr-only">Search</label>
-                        <input id="search" type="search" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Search</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -43,5 +49,15 @@
 <hr />
 
 <footer class="container">
-    <p><small>&copy; 2013 Max Battcher. Most Rights Reserved.</small></p>
+    <div class="col-md-6">
+        <p><small>&copy; 2013 Max Battcher. Most Rights Reserved.</small></p>
+    </div>
+    <div class="col-md-6 text-right">
+        <div data-bind="if: loggedIn">
+            <ul class="list-inline">
+                <li><small><a href="#account/manage">Manage Your Account</a></small></li>
+                <li><small><button class="btn btn-link" data-bind="click: logout">Logout</button></small></li>
+            </ul>
+        </div>
+    </div>
 </footer>

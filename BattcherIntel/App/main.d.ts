@@ -1,3 +1,3 @@
-declare module 'ko-validation' {
-    export = KnockoutStatic;
+declare module "nprogress" {
+     export = NProgress;
 }

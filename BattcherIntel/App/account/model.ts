@@ -1,3 +1,5 @@
+import util = require('../util');
+
 // Routes
 var addExternalLoginUrl = "/api/Account/AddExternalLogin";
 var changePasswordUrl = "/api/Account/changePassword";
@@ -105,7 +107,7 @@ export function addExternalLogin(data) {
         type: "POST",
         data: data,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function changePassword(data) {
@@ -113,21 +115,21 @@ export function changePassword(data) {
         type: "POST",
         data: data,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function getExternalLogins(returnUrl, generateState) {
     return $.ajax(externalLoginsUrl(returnUrl, generateState), {
         cache: false,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function getManageInfo(returnUrl, generateState) {
     return $.ajax(manageInfoUrl(returnUrl, generateState), {
         cache: false,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function getUserInfo(accessToken) {
@@ -144,28 +146,28 @@ export function getUserInfo(accessToken) {
     return $.ajax(userInfoUrl, {
         cache: false,
         headers: headers
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function login(data) {
     return $.ajax(loginUrl, {
         type: "POST",
         data: data
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function logout() {
     return $.ajax(logoutUrl, {
         type: "POST",
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function register(data) {
     return $.ajax(registerUrl, {
         type: "POST",
         data: data
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function registerExternal(accessToken, data) {
@@ -175,7 +177,7 @@ export function registerExternal(accessToken, data) {
         headers: {
             "Authorization": "Bearer " + accessToken
         }
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function removeLogin(data) {
@@ -183,7 +185,7 @@ export function removeLogin(data) {
         type: "POST",
         data: data,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }
 
 export function setPassword(data) {
@@ -191,5 +193,5 @@ export function setPassword(data) {
         type: "POST",
         data: data,
         headers: getSecurityHeaders()
-    });
+    }).then(result => result, util.failAsJson);
 }

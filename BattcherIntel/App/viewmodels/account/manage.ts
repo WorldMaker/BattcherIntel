@@ -1,6 +1,7 @@
+/// <amd-dependency path="knockout.validation"/>
 import dataModel = require('../../account/model');
 import elp = require('../../account/externalLoginProvider');
-import ko = require('ko-validation');
+import ko = require('knockout');
 import ChangePasswordViewModel = require('./changepassword');
 import RemoveLoginViewModel = require('./removelogin');
 import SetPasswordViewModel = require('./addpassword');
