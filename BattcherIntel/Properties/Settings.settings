@@ -8,8 +8,5 @@
     <Setting Name="MicrosoftAccountsClientSecret" Type="System.String" Scope="Application">
       <Value Profile="(Default)">REPLACEME</Value>
     </Setting>
-    <Setting Name="SiteUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://battcherintel.azurewebsites.net</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

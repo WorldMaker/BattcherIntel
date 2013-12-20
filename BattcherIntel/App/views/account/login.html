@@ -6,12 +6,12 @@
         <hr />
         <!--<div data-bind="visible: loadingExternalLogin">Loading...</div>-->
         <!--<div data-bind="visible: !loadingExternalLogin()">-->
-        <div data-bind="visible: !hasExternalLogin()">
+        <!--<div data-bind="visible: !hasExternalLogin()">
             <p>
                 There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
                 for details on setting up this ASP.NET application to support logging in via external services.
             </p>
-        </div>
+        </div>-->
         <form class="form-horizontal" role="form" data-bind="visible: hasExternalLogin">
             <p data-bind="foreach: externalLoginProviders">
                 <button type="submit" class="btn btn-default" data-bind="attr: { title: 'Log in using your ' + name + ' account' }, click: login">

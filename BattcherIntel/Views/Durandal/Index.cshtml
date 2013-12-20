@@ -25,10 +25,6 @@
         @Html.Partial("_splash")
     </div>
 
-    <script type="text/javascript">
-        // Global config
-        var siteUrl = "@BattcherIntel.Properties.Settings.Default.SiteUrl";
-    </script>
     @if (Context.IsDebuggingEnabled || !File.Exists(Server.MapPath("~/App/main-built.js")))
     {
         <script type="text/javascript" src="~/Scripts/require.js" data-main="/App/main"></script>
