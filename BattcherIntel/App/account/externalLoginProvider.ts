@@ -12,6 +12,13 @@ export class ExternalLoginProviderViewModel {
     state: any;
     url: string;
 
+    get faIconClass(): string {
+        if (/Microsoft/i.test(this.name)) {
+            return "fa fa-windows";
+        }
+        return "fa fa-user";
+    }
+
     constructor(data: ExternalLoginProvider) {
         this.name = data.name;
         this.state = data.state;

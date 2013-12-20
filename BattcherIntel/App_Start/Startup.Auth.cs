@@ -47,9 +47,9 @@ namespace BattcherIntel
             app.UseOAuthBearerTokens(OAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: Properties.Settings.Default.MicrosoftAccountsClientId,
+                clientSecret: Properties.Settings.Default.MicrosoftAccountsClientSecret);
 
             //app.UseTwitterAuthentication(
             //    consumerKey: "",
