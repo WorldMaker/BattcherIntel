@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201312210656434_One more spot of cleanup.Designer.cs">
       <DependentUpon>201312210656434_One more spot of cleanup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312212105016_Unique keys.cs" />
+    <Compile Include="Migrations\201312212105016_Unique keys.Designer.cs">
+      <DependentUpon>201312212105016_Unique keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -421,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312210656434_One more spot of cleanup.resx">
       <DependentUpon>201312210656434_One more spot of cleanup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312212105016_Unique keys.resx">
+      <DependentUpon>201312212105016_Unique keys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,9 +10,11 @@ namespace BattcherIntel.Models
     {
         public int Id { get; set; }
         [Required]
-        public string MissionCode { get; set; } // TODO: Unique index
+        [MaxLength(127)]
+        public string MissionCode { get; set; }
         public string MissionText { get; set; }
-        public string MissionSecret { get; set; } // TODO: Unique index
+        [MaxLength(1023)]
+        public string MissionSecret { get; set; }
         public DateTime? Unlocked { get; set; }
         public DateTime? Completed { get; set; }
         public bool IsBirthdayMission { get; set; }
