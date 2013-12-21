@@ -10,9 +10,9 @@ namespace BattcherIntel.Models
     {
         public int Id { get; set; }
         [Required]
-        public string MissionCode { get; set; }
+        public string MissionCode { get; set; } // TODO: Unique index
         public string MissionText { get; set; }
-        public string MissionSecret { get; set; }
+        public string MissionSecret { get; set; } // TODO: Unique index
         public DateTime? Unlocked { get; set; }
         public DateTime? Completed { get; set; }
         public bool IsBirthdayMission { get; set; }

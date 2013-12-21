@@ -20,18 +20,23 @@ namespace BattcherIntel.Controllers
     {
         private BattcherIntelContext db = new BattcherIntelContext();
 
+        private IQueryable<Mission> GetAvailableMissions()
+        {
+            return db.Missions.Where(m => m.Completed.HasValue || (m.Agent.User == User && m.Unlocked.HasValue));
+        }
+
         // GET odata/Mission
         [Queryable]
         public IQueryable<Mission> GetMission()
         {
-            return db.Missions;
+            return GetAvailableMissions();
         }
 
         // GET odata/Mission(5)
         [Queryable]
         public SingleResult<Mission> GetMission([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Missions.Where(mission => mission.Id == key));
+            return SingleResult.Create(GetAvailableMissions().Where(mission => mission.Id == key));
         }
 
         // PUT odata/Mission(5)
@@ -141,21 +146,21 @@ namespace BattcherIntel.Controllers
         [Queryable]
         public SingleResult<Agent> GetAgent([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Missions.Where(m => m.Id == key).Select(m => m.Agent));
+            return SingleResult.Create(GetAvailableMissions().Where(m => m.Id == key).Select(m => m.Agent));
         }
 
         // GET odata/Mission(5)/Reports
         [Queryable]
         public IQueryable<Report> GetReports([FromODataUri] int key)
         {
-            return db.Missions.Where(m => m.Id == key).SelectMany(m => m.Reports);
+            return GetAvailableMissions().Where(m => m.Id == key).SelectMany(m => m.Reports);
         }
 
         // GET odata/Mission(5)/TargetAgent
         [Queryable]
         public SingleResult<Agent> GetTargetAgent([FromODataUri] int key)
         {
-            return SingleResult.Create(db.Missions.Where(m => m.Id == key).Select(m => m.TargetAgent));
+            return SingleResult.Create(GetAvailableMissions().Where(m => m.Id == key).Select(m => m.TargetAgent));
         }
 
         protected override void Dispose(bool disposing)
@@ -169,7 +174,7 @@ namespace BattcherIntel.Controllers
 
         private bool MissionExists(int key)
         {
-            return db.Missions.Count(e => e.Id == key) > 0;
+            return GetAvailableMissions().Any(e => e.Id == key);
         }
     }
 }
