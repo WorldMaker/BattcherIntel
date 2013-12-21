@@ -14,6 +14,7 @@ namespace BattcherIntel.Models
         [Required]
         public int AgentId { get; set; }
         public string MissionText { get; set; }
+        public string MissionSecret { get; set; }
         public int? TargetAgentId { get; set; }
         public DateTime? Unlocked { get; set; }
         public DateTime? Completed { get; set; }

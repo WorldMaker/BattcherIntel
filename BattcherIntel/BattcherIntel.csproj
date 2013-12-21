@@ -231,6 +231,10 @@
     <Compile Include="Migrations\201312210525447_Initial.Designer.cs">
       <DependentUpon>201312210525447_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312210608441_Add Secret.cs" />
+    <Compile Include="Migrations\201312210608441_Add Secret.Designer.cs">
+      <DependentUpon>201312210608441_Add Secret.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -400,6 +404,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201312210525447_Initial.resx">
       <DependentUpon>201312210525447_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312210608441_Add Secret.resx">
+      <DependentUpon>201312210608441_Add Secret.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
