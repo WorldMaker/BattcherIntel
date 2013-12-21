@@ -15,18 +15,16 @@ namespace BattcherIntel.Models
 
     public class Report
     {
-        public int ReportId { get; set; }
-        [Required]
-        public int AgentId { get; set; }
-        [Required]
-        public int MissionId { get; set; }
+        public int Id { get; set; }
         [Required]
         public ReportType Type { get; set; }
         public DateTime Created { get; set; }
         public string Comments { get; set; }
 
         // Nav properties
+        [Required]
         public virtual Agent Agent { get; set; }
+        [Required]
         public virtual Mission Mission { get; set; }
     }
 }

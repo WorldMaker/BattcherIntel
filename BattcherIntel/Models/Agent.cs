@@ -9,7 +9,7 @@ namespace BattcherIntel.Models
 {
     public class Agent
     {
-        public int AgentId { get; set; }
+        public int Id { get; set; }
         [DataType(DataType.EmailAddress)]
         public string AgentAccount { get; set; }
         // TODO: What else should we store here?
