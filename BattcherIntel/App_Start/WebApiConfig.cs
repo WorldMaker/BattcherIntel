@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.OData.Builder;
+using BattcherIntel.Models;
 
 namespace BattcherIntel
 {
@@ -28,6 +30,12 @@ namespace BattcherIntel
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Mission>("Mission");
+            builder.EntitySet<Agent>("Agent");
+            builder.EntitySet<Report>("Report");
+            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
         }
     }
 }

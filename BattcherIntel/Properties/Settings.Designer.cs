@@ -22,23 +22,5 @@ namespace BattcherIntel.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("REPLACEME")]
-        public string MicrosoftAccountsClientId {
-            get {
-                return ((string)(this["MicrosoftAccountsClientId"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("REPLACEME")]
-        public string MicrosoftAccountsClientSecret {
-            get {
-                return ((string)(this["MicrosoftAccountsClientSecret"]));
-            }
-        }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using BattcherIntel.Providers;
+using System.Configuration;
 
 namespace BattcherIntel
 {
@@ -48,8 +49,8 @@ namespace BattcherIntel
 
             // Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: Properties.Settings.Default.MicrosoftAccountsClientId,
-                clientSecret: Properties.Settings.Default.MicrosoftAccountsClientSecret);
+                clientId: ConfigurationManager.AppSettings["MicrosoftAccountsClientId"],
+                clientSecret: ConfigurationManager.AppSettings["MicrosoftAccountsClientSecret"]);
 
             //app.UseTwitterAuthentication(
             //    consumerKey: "",
