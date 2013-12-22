@@ -18,6 +18,7 @@ namespace BattcherIntel.Models
         public DateTime? Unlocked { get; set; }
         public DateTime? Completed { get; set; }
         public bool IsBirthdayMission { get; set; }
+        public bool IsArchived { get; set; }
 
         // Nav properties
         [Required]

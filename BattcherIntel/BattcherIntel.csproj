@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201312212105016_Unique keys.Designer.cs">
       <DependentUpon>201312212105016_Unique keys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312220519192_Add IsArchived flag.cs" />
+    <Compile Include="Migrations\201312220519192_Add IsArchived flag.Designer.cs">
+      <DependentUpon>201312220519192_Add IsArchived flag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -431,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312212105016_Unique keys.resx">
       <DependentUpon>201312212105016_Unique keys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312220519192_Add IsArchived flag.resx">
+      <DependentUpon>201312220519192_Add IsArchived flag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -22,7 +22,7 @@ namespace BattcherIntel.Controllers
 
         private IQueryable<Mission> GetAvailableMissions()
         {
-            return db.Missions.Where(m => m.Completed.HasValue || (m.Agent.User == User && m.Unlocked.HasValue));
+            return db.Missions.Where(m => m.IsArchived || (m.Agent.User == User && m.Unlocked.HasValue));
         }
 
         // GET odata/Mission
