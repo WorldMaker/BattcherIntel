@@ -39,11 +39,13 @@ module.exports = function (grunt) {
                         'knockout.validation': '../Scripts/knockout.validation',
                         'lodash.underscore': '../Scripts/lodash.underscore',
                         'nprogress': '../Scripts/nprogress',
-                        'Q': '../Scripts/q',
+                        'q': '../Scripts/q',
                         'underscore-ko': '../Scripts/underscore-ko'
                     },
                     map: {
                         '*': {
+                            'Q': 'q',
+                            'ko': 'knockout',
                             'underscore': 'lodash.underscore'
                         }
                     },
