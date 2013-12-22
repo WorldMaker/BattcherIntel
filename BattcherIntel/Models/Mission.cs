@@ -24,6 +24,7 @@ namespace BattcherIntel.Models
         [Required]
         public virtual Agent Agent { get; set; }
         public virtual Agent TargetAgent { get; set; }
+        public virtual Pack Pack { get; set; }
         public virtual IEnumerable<Report> Reports { get; set; }
     }
 }
