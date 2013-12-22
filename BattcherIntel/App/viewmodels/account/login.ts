@@ -64,7 +64,7 @@ class LoginVM {
                 this.loggingIn(false);
 
             if (data.userName && data.access_token) {
-                security.login(data.userName, data.access_token, this.rememberMe(), this.returnUrl);
+                security.login(data.userName, data.access_token, this.rememberMe(), this.returnUrl, data.roles);
                 } else {
                     this.errors.push("An unknown error occurred.");
                 }

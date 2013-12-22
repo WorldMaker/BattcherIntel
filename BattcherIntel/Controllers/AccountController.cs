@@ -45,13 +45,17 @@ namespace BattcherIntel.Controllers
         [Route("UserInfo")]
         public UserInfoViewModel GetUserInfo()
         {
-            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            var claimsId = User.Identity as ClaimsIdentity;
+            ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(claimsId);
 
             return new UserInfoViewModel
             {
                 UserName = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+                Roles = from claim in claimsId.Claims
+                        where claim.Type == claimsId.RoleClaimType
+                        select claim.Value,
             };
         }
 

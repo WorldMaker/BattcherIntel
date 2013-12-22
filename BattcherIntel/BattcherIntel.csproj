@@ -405,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\viewmodels\shell.ts" />
+    <TypeScriptCompile Include="Models\AccountViewModels.cs.d.ts">
+      <DependentUpon>AccountViewModels.cs</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Scripts\typings\durandal\durandal.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />

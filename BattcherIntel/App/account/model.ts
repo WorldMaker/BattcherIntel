@@ -122,17 +122,17 @@ export function getExternalLogins(returnUrl, generateState) {
     return $.ajax(externalLoginsUrl(returnUrl, generateState), {
         cache: false,
         headers: getSecurityHeaders()
-    }).then(result => result, util.failAsJson);
+    }).then<server.ExternalLoginViewModel>(result => result, util.failAsJson);
 }
 
 export function getManageInfo(returnUrl, generateState) {
     return $.ajax(manageInfoUrl(returnUrl, generateState), {
         cache: false,
         headers: getSecurityHeaders()
-    }).then(result => result, util.failAsJson);
+    }).then<server.ManageInfoViewModel>(result => result, util.failAsJson);
 }
 
-export function getUserInfo(accessToken) {
+export function getUserInfo(accessToken?) {
     var headers;
 
     if (typeof (accessToken) !== "undefined") {
@@ -146,7 +146,7 @@ export function getUserInfo(accessToken) {
     return $.ajax(userInfoUrl, {
         cache: false,
         headers: headers
-    }).then(result => result, util.failAsJson);
+    }).then<server.UserInfoViewModel>(result => result, util.failAsJson);
 }
 
 export function login(data) {

@@ -30,7 +30,7 @@
     }
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'account/security'],  function (system, app, viewLocator, security) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");
@@ -49,6 +49,9 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (s
         viewLocator.useConvention();
 
         //Show the app by setting the root view model for our application with a transition.
-        app.setRoot('viewmodels/shell', 'entrance');
+        security.initializeAuth()
+            .then(function () {
+                app.setRoot('viewmodels/shell', 'entrance')
+            });
     });
 });
