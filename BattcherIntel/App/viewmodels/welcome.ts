@@ -6,7 +6,7 @@ class WelcomeVM {
     loggedIn = security.loggedIn;
     displayName = ko.computed(() => {
         if (security.loggedIn()) {
-            return this.headLine + ', ' + (security.user().isInRole('agent') ? 'Agent ' : '') + security.user().name();
+            return this.headLine + ', ' + (security.user().isInRole(/agent/i) ? 'Agent ' : '') + security.user().name();
         }
         return this.headLine;
     });

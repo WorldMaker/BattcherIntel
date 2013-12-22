@@ -17,12 +17,14 @@ module.exports = function (grunt) {
                     "app/**/*.js",
                     "app/**/*.html",
                     "scripts/bootstrap.js",
+                    "scripts/breeze.js",
                     "scripts/durandal/**/*.*",
                     "scripts/jquery-2.0.3.js",
                     "scripts/knockout-3.0.0.js",
                     "scripts/knockout.validation.js",
                     "scripts/lodash.underscore.js",
                     "scripts/nprogress.js",
+                    "scripts/q.js",
                     "scripts/underscore-ko.js"
                 ],
                 options: {
@@ -31,11 +33,13 @@ module.exports = function (grunt) {
                     out: "app/main-built.js",
                     paths: {
                         'bootstrap': '../Scripts/bootstrap',
+                        'breeze': '../Scripts/breeze',
                         'jquery': '../Scripts/jquery-2.0.3',
                         'knockout': '../Scripts/knockout-3.0.0',
                         'knockout.validation': '../Scripts/knockout.validation',
                         'lodash.underscore': '../Scripts/lodash.underscore',
                         'nprogress': '../Scripts/nprogress',
+                        'Q': '../Scripts/q',
                         'underscore-ko': '../Scripts/underscore-ko'
                     },
                     map: {

@@ -1,24 +1,24 @@
 declare module server {
 
 	interface ExternalLoginViewModel{
-		Name: String;
-		Url: String;
-		State: String;
+		name: String;
+		url: String;
+		state: String;
 }
 	interface ManageInfoViewModel{
-		LocalLoginProvider: String;
-		UserName: String;
-		Logins: UserLoginInfoViewModel[];
-		ExternalLoginProviders: ExternalLoginViewModel[];
+		localLoginProvider: String;
+		userName: String;
+		logins: UserLoginInfoViewModel[];
+		externalLoginProviders: ExternalLoginViewModel[];
 }
 	interface UserInfoViewModel{
-		UserName: String;
-		HasRegistered: Boolean;
-		LoginProvider: String;
-		Roles: string[];
+		userName: String;
+		hasRegistered: Boolean;
+		loginProvider: String;
+		roles: string[];
 }
 	interface UserLoginInfoViewModel{
-		LoginProvider: String;
-		ProviderKey: String;
+		loginProvider: String;
+		providerKey: String;
 }
 }

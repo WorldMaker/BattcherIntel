@@ -45,6 +45,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Breeze.ContextProvider">
+      <HintPath>..\packages\Breeze.Server.ContextProvider.1.4.7\lib\Breeze.ContextProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.ContextProvider.EF6">
+      <HintPath>..\packages\Breeze.Server.ContextProvider.EF6.1.4.7\lib\Breeze.ContextProvider.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Breeze.WebApi2">
+      <HintPath>..\packages\Breeze.Server.WebApi2.1.4.7\lib\Breeze.WebApi2.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
@@ -200,6 +209,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BreezeWebApiConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DurandalBundleConfig.cs" />
     <Compile Include="App_Start\DurandalConfig.cs" />
@@ -270,10 +280,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
-    <Content Include="App\viewmodels\flickr.js" />
     <Content Include="App\views\account\manage.html" />
     <Content Include="App\views\account\register.html" />
     <Content Include="App\views\account\registerExternal.html" />
+    <Content Include="App\views\archive.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -299,6 +309,9 @@
     <Content Include="package.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\breeze.intellisense.js" />
+    <Content Include="Scripts\breeze.js" />
+    <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
@@ -306,6 +319,7 @@
     <TypeScriptCompile Include="App\account\model.ts" />
     <TypeScriptCompile Include="App\account\security.ts" />
     <TypeScriptCompile Include="App\main.d.ts" />
+    <TypeScriptCompile Include="App\svc\mission.ts" />
     <TypeScriptCompile Include="App\util.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\addpassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\changepassword.ts" />
@@ -314,10 +328,10 @@
     <TypeScriptCompile Include="App\viewmodels\account\register.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\registerExternal.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\removelogin.ts" />
+    <TypeScriptCompile Include="App\viewmodels\archive.ts" />
     <TypeScriptCompile Include="App\viewmodels\welcome.ts" />
     <Content Include="App\views\account\login.html" />
     <Content Include="App\views\detail.html" />
-    <Content Include="App\views\flickr.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\views\welcome.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -366,6 +380,8 @@
     <Content Include="Scripts\modernizr-2.7.1.js" />
     <Content Include="Scripts\nprogress.js" />
     <Content Include="Scripts\nprogress.min.js" />
+    <Content Include="Scripts\q.js" />
+    <Content Include="Scripts\q.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
@@ -412,11 +428,13 @@
     <TypeScriptCompile Include="Models\AccountViewModels.cs.d.ts">
       <DependentUpon>AccountViewModels.cs</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Scripts\typings\breeze\breeze.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\durandal\durandal.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\nprogress\NProgress.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\q\Q.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore-ko\underscore-ko.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>

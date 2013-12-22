@@ -31,11 +31,11 @@ namespace BattcherIntel
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Mission>("Mission");
-            builder.EntitySet<Agent>("Agent");
-            builder.EntitySet<Report>("Report");
-            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
+            //var builder = new ODataConventionModelBuilder();
+            //builder.EntitySet<Mission>("Mission");
+            //builder.EntitySet<Agent>("Agent");
+            //builder.EntitySet<Report>("Report");
+            //config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
         }
     }
 }

@@ -4,6 +4,8 @@ import ko = require('knockout');
 import router = require('plugins/router');
 import system = require('durandal/system');
 
+export var getSecurityHeaders = dataModel.getSecurityHeaders;
+
 export class UserVM {
     name = ko.observable<string>();
     roles = ko.observableArray<string>();
@@ -12,8 +14,8 @@ export class UserVM {
         this.name(name);
     }
 
-    isInRole(role: string): boolean {
-        return this.roles.contains(role);
+    isInRole(role: RegExp): boolean {
+        return this.roles.some(r => role.test(r));
     }
 }
 
@@ -146,7 +148,7 @@ export function initializeAuth() {
             dataModel.getUserInfo()
                 .done(function (data) {
                     if (data.userName) {
-                        this.setAuthInfo(data.userName, data.roles);
+                        login(data.userName, null, false, null, data.roles);
                         sessionStorage["redirectTo"] = "account/manage?externalAccessToken=" + externalAccessToken + "&externalError=" + externalError;
                     }
                     dfd.resolve(true);

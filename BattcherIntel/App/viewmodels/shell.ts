@@ -1,11 +1,18 @@
+/// <amd-dependency path="bootstrap"/>
 export import router = require('plugins/router');
 import app = require('durandal/app');
 export import security = require('../account/security');
 import util = require('../util');
+import breeze = require('breeze');
+
+var ajaxAdapter: any = breeze.config.getAdapterInstance('ajax');
+ajaxAdapter.defaultSettings = {
+    headers: security.getSecurityHeaders(),
+}
 
 // Mix-in for authorization requirement
 interface AuthorizedDurandalRouteConfiguration extends DurandalRouteConfiguration {
-    authorize?: string;
+    authorize?: RegExp;
 }
 
 export var loggedIn = security.loggedIn;
@@ -51,7 +58,7 @@ export function activate() {
 
     router.map([
         { route: '', title: 'Welcome', moduleId: 'viewmodels/welcome', nav: true },
-        { route: 'flickr', moduleId: 'viewmodels/flickr', nav: true, authorize: 'agent' },
+        { route: 'archive', moduleId: 'viewmodels/archive', nav: true, authorize: /agent/i },
 
         // Accounts
         { route: 'account/login', title: 'Login', moduleId: 'viewmodels/account/login', nav: false },

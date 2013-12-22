@@ -24,7 +24,7 @@ function manageInfoUrl(returnUrl, generateState) {
 }
 
 // Other private operations
-function getSecurityHeaders(): any {
+export function getSecurityHeaders(): any {
     var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
 
     if (accessToken) {
