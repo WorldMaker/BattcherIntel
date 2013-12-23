@@ -50,7 +50,7 @@ class RegisterExternalViewModel {
     activate(data) {
         this.userName(data.userName);
         this.loginProvider(data.loginProvider);
-        this.externalAccessToken = data.externalAccessToken;
+        this.externalAccessToken = data.access_token;
         this.loginUrl = data.loginUrl;
         this.state = data.state;
     }
