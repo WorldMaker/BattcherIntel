@@ -3,12 +3,6 @@ export import router = require('plugins/router');
 import app = require('durandal/app');
 export import security = require('../account/security');
 import util = require('../util');
-import breeze = require('breeze');
-
-var ajaxAdapter: any = breeze.config.getAdapterInstance('ajax');
-ajaxAdapter.defaultSettings = {
-    headers: security.getSecurityHeaders(),
-}
 
 // Mix-in for authorization requirement
 interface AuthorizedDurandalRouteConfiguration extends DurandalRouteConfiguration {
