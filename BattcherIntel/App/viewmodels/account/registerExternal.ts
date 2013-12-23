@@ -47,12 +47,12 @@ class RegisterExternalViewModel {
             });
     }
 
-    activate(userName, loginProvider, externalAccessToken, loginUrl, state) {
-        this.userName(userName);
-        this.loginProvider(loginProvider);
-        this.externalAccessToken = externalAccessToken;
-        this.loginUrl = loginUrl;
-        this.state = state;
+    activate(data) {
+        this.userName(data.userName);
+        this.loginProvider(data.loginProvider);
+        this.externalAccessToken = data.externalAccessToken;
+        this.loginUrl = data.loginUrl;
+        this.state = data.state;
     }
 }
 
