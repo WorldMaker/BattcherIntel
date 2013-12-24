@@ -1,18 +1,21 @@
+import _ = require('underscore');
 import ko = require('knockout');
 import moment = require('moment');
 import security = require('../account/security');
 import util = require('../util');
+import report = require('./report');
 
 export class MissionVM {
     id: number;
-    agent = ko.observable<string>();
+    agent = ko.observable<Agent>();
     missionCode = ko.observable<string>();
     detailsPage = ko.computed(() => "#mission/" + this.missionCode());
     missionText = ko.observable<string>();
     unlocked = ko.observable<Moment>();
     completed = ko.observable<Moment>();
     isArchived = ko.observable<boolean>();
-    reports = ko.observableArray<Report>();
+    reports = ko.observableArray<report.ReportVM>();
+    myMission = ko.computed(() => this.agent() && this.agent().username == security.user().name());
 
     constructor(data?: Mission) {
         if (data) {
@@ -22,7 +25,7 @@ export class MissionVM {
     }
 
     update(data: Mission) {
-        this.agent(data.agent.username);
+        this.agent(data.agent);
         this.missionCode(data.missionCode);
         this.missionText(data.missionText);
         this.unlocked(moment.utc(data.unlocked).local());
@@ -32,7 +35,7 @@ export class MissionVM {
             this.completed(null);
         }
         this.isArchived(data.isArchived);
-        this.reports(data.reports);
+        this.reports(_.map(data.reports, r => new report.ReportVM(r)));
     }
 }
 

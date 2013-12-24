@@ -11,6 +11,28 @@
     <dd><strong data-bind="text: missionText">…</strong></dd>
 </dl>
 
+<h3>Mission Reports</h3>
+
+<p data-bind="visible: reports().length < 1">No mission reports have been filed yet.</p>
 <div data-bind="foreach: reports">
-    <p data-bind="text: $data">…</p><!-- TODO -->
+    <div class="text-muted"><span data-bind="text: created().fromNow()">…</span> from <em data-bind="text: agent().username">…</em></div>
+    <p data-bind="text: comments, class: { 'text-warning': type() == 1, 'text-success': type() == 2 }">…</p>
 </div>
+
+<h4>File Mission Report</h4>
+
+<form class="form-horizontal" data-bind="submit: fileReport">
+    <div class="form-group">
+        <label for="comments" class="control-label col-sm-1">Report</label>
+        <div class="col-sm-11">
+            <textarea id="comments" class="form-control" data-bind="value: reportComments" rows="10"></textarea>
+            <span class="help-block" data-bind="visible: myMission">Please provide any specifics on the mission and its results.</span>
+            <span class="help-block" data-bind="visible: !myMission()">Please report what you thought of the mission and if you consider it a success.</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-11">
+            <button class="btn btn-primary" data-bind="disable: isFilingReport">Submit</button>
+        </div>
+    </div>
+</form>

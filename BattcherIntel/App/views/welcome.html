@@ -6,14 +6,25 @@
     </div>
 
     <div data-bind="if: loggedIn">
+        <div data-bind="if: isBirthday">-->
+            <p class="alert alert-success"><span class="fa fa-2x fa-gift"></span> Happy Birthday!</p>
+        </div>
+
         <p class="alert alert-info">
             Use the search in the navigation bar above to unlock a mission ID or mission secret. You can unlock up to <span data-bind="text: available">…</span>
             mission<span data-bind="visible: available() != 1">s</span> currently.
         </p>
 
         <h3 data-bind="visible: missions">Current Missions</h3>
+        <p data-bind="visible: missions().length < 1">No current missions.</p>
         <ul data-bind="foreach: missions">
-            <li><a data-bind="attr: {href: detailsPage}">Started <span data-bind="text: unlocked().fromNow()">…</span>: <strong data-bind="text: missionCode">…</strong> for <em data-bind="text: agent">…</em>: <span data-bind="text: missionText">…</span></a></li>
+            <li><a data-bind="attr: {href: detailsPage}">Started <span data-bind="text: unlocked().fromNow()">…</span>, <strong data-bind="text: missionCode">…</strong>: <span data-bind="text: missionText">…</span></a></li>
+        </ul>
+
+        <h3 data-bind="visible: reports">Recent Reports on your Missions</h3>
+        <p data-bind="visible: reports().length < 1">No recent reports.</p>
+        <ul data-bind="foreach: reports">
+            <li><a data-bind="attr: {href: detailsPage}"><span data-bind="text: created().fromNow()">…</span>, <span data-bind="text: agent().username">…</span> on <strong data-bind="text: missionCode">…</strong></a></li>
         </ul>
     </div>
 

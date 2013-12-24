@@ -82,7 +82,7 @@ namespace BattcherIntel.Controllers
 
         // POST api/Report
         [ResponseType(typeof(Report))]
-        public async Task<IHttpActionResult> PostReport(Report report)
+        public async Task<IHttpActionResult> PostReport(ReportSubmission submission)
         {
             if (!ModelState.IsValid)
             {
@@ -90,9 +90,21 @@ namespace BattcherIntel.Controllers
             }
 
             var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
-            report.Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleAsync();
-            report.Type = ReportType.Other;
-            report.Created = DateTime.UtcNow;
+            var mission = await db.Missions.FindAsync(submission.MissionId);
+
+            if (mission == null || !(mission.IsArchived || mission.Agent.User.Id == dbuser.Id))
+            {
+                return BadRequest("Inaccessible mission.");
+            }
+
+            var report = new Report
+            {
+                Mission = mission,
+                Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleAsync(),
+                Type = ReportType.Other,
+                Comments = submission.Comments,
+                Created = DateTime.UtcNow,
+            };
 
             db.Reports.Add(report);
             await db.SaveChangesAsync();

@@ -64,7 +64,7 @@ namespace BattcherIntel.Controllers
                             Created = DateTime.UtcNow,
                             Mission = mission,
                         };
-                        if (mission.TargetAgent.User == User)
+                        if (mission.TargetAgent == null || mission.TargetAgent.User.Id == dbuser.Id)
                         {
                             mission.Completed = DateTime.UtcNow;
                             report.Comments = string.Format(Properties.Resources.MissionCompleted, dbuser.UserName);

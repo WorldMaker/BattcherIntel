@@ -37,7 +37,7 @@ namespace BattcherIntel.Controllers
         [ResponseType(typeof(Mission))]
         public async Task<IHttpActionResult> GetMissionByCode(string code)
         {
-            Mission mission = await db.Missions
+            Mission mission = await db.Missions.Include(m => m.Reports)
                 .Where(m => m.MissionCode == code)
                 .SingleOrDefaultAsync();
             if (mission == null || !mission.Unlocked.HasValue || (!mission.IsArchived && mission.Agent.User != User))

@@ -7,7 +7,6 @@ class ArchiveVM {
 
     activate() {
         return mission.getArchivedMissions().then(missions => {
-            this.missions.removeAll();
             _.each(missions, m => {
                 this.missions.push(new mission.MissionVM(m));
             })

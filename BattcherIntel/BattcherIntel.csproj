@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201312240406065_Agent Birthday.Designer.cs">
       <DependentUpon>201312240406065_Agent Birthday.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312241804408_Fix reverse relationships.cs" />
+    <Compile Include="Migrations\201312241804408_Fix reverse relationships.Designer.cs">
+      <DependentUpon>201312241804408_Fix reverse relationships.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -270,6 +274,7 @@
     <Compile Include="Models\Pack.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Mission.cs" />
+    <Compile Include="Models\ReportSubmission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -332,6 +337,7 @@
     <TypeScriptCompile Include="App\main.d.ts" />
     <TypeScriptCompile Include="App\svc\mission.ts" />
     <TypeScriptCompile Include="App\svc\model.d.ts" />
+    <TypeScriptCompile Include="App\svc\report.ts" />
     <TypeScriptCompile Include="App\util.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\addpassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\changepassword.ts" />
@@ -481,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312240406065_Agent Birthday.resx">
       <DependentUpon>201312240406065_Agent Birthday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312241804408_Fix reverse relationships.resx">
+      <DependentUpon>201312241804408_Fix reverse relationships.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

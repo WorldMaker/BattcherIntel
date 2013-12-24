@@ -26,10 +26,5 @@ namespace BattcherIntel.Models
         {
             get { return User == null ? "[Redacted]" : User.UserName; }
         }
-
-        [JsonIgnore]
-        public virtual IEnumerable<Mission> Missions { get; set; }
-        [JsonIgnore]
-        public virtual IEnumerable<Report> Reports { get; set; }
     }
 }

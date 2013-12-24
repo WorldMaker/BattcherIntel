@@ -8,6 +8,7 @@ interface Report {
     type: number;
     created: string;
     comments: string;
+    agent: Agent;
 }
 
 interface Mission {
@@ -23,7 +24,14 @@ interface Mission {
     reports: Report[];
 }
 
+interface DashboardRecentReport {
+    report: Report;
+    missionCode: string;
+}
+
 interface Dashboard {
     available: number;
+    isBirthday: boolean;
     missions: Mission[];
+    reports: { report: Report; missionCode: string }[];
 }
