@@ -22,6 +22,7 @@ module.exports = function (grunt) {
                     "scripts/knockout-3.0.0.js",
                     "scripts/knockout.validation.js",
                     "scripts/lodash.underscore.js",
+                    "scripts/moment.js",
                     "scripts/nprogress.js",
                     "scripts/underscore-ko.js"
                 ],
@@ -35,6 +36,7 @@ module.exports = function (grunt) {
                         'knockout': '../Scripts/knockout-3.0.0',
                         'knockout.validation': '../Scripts/knockout.validation',
                         'lodash.underscore': '../Scripts/lodash.underscore',
+                        'moment': '../Scripts/moment',
                         'nprogress': '../Scripts/nprogress',
                         'underscore-ko': '../Scripts/underscore-ko'
                     },

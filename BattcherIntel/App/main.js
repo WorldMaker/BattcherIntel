@@ -10,6 +10,7 @@
         'knockout': '../Scripts/knockout-3.0.0',
         'knockout.validation': '../Scripts/knockout.validation',
         'lodash.underscore': '../Scripts/lodash.underscore',
+        'moment': '../Scripts/moment',
         'nprogress': '../Scripts/nprogress',
         'underscore-ko': '../Scripts/underscore-ko'
     },
@@ -18,6 +19,7 @@
             'underscore': 'lodash.underscore'
         },
     },
+    noGlobal: true, // For moment.js deprecation warning
     shim: {
         'bootstrap': ['jquery'],
         'jquery': {
