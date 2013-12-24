@@ -37,10 +37,11 @@ namespace BattcherIntel.Controllers
         [ResponseType(typeof(Mission))]
         public async Task<IHttpActionResult> GetMissionByCode(string code)
         {
+            var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
             Mission mission = await db.Missions.Include(m => m.Reports)
                 .Where(m => m.MissionCode == code)
                 .SingleOrDefaultAsync();
-            if (mission == null || !mission.Unlocked.HasValue || (!mission.IsArchived && mission.Agent.User != User))
+            if (mission == null || !mission.Unlocked.HasValue || (!mission.IsArchived && mission.Agent.User.Id != dbuser.Id))
             {
                 return NotFound();
             }
