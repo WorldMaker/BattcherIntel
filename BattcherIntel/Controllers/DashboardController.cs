@@ -31,6 +31,7 @@ namespace BattcherIntel.Controllers
             var agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleOrDefaultAsync();
             var isBirthday = DateTime.Today.Month == agent.Birthday.Month && DateTime.Today.Day == agent.Birthday.Day;
             var missions = await db.Missions.Where(m => m.Agent.Id == agent.Id && m.Unlocked.HasValue && !m.Completed.HasValue).ToArrayAsync();
+            var unlockedMissionCount = await db.Missions.Where(m => m.Agent.Id == agent.Id && m.Unlocked.HasValue && m.Pack.Name == "base2014").CountAsync();
             var reports = await db.Reports.Where(r => r.Mission.Completed.HasValue && r.Agent.User.Id != dbuser.Id
                     && (r.Mission.Agent.User.Id == dbuser.Id || r.Mission.TargetAgent.User.Id == dbuser.Id))
                 .OrderByDescending(r => r.Created)
@@ -38,7 +39,7 @@ namespace BattcherIntel.Controllers
                 .Take(15)
                 .ToArrayAsync();
             var unlockable = (int)Math.Floor((DateTime.Today - new DateTime(2013, 12, 25)).TotalDays / 7) + 1;
-            return Ok(new { available = unlockable - missions.Length, isBirthday, missions, reports });
+            return Ok(new { available = unlockable - unlockedMissionCount, isBirthday, missions, reports });
         }
 
         protected override void Dispose(bool disposing)
