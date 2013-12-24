@@ -269,6 +269,10 @@
     <Compile Include="Migrations\201312241804408_Fix reverse relationships.Designer.cs">
       <DependentUpon>201312241804408_Fix reverse relationships.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312242122233_Cleanup unused field.cs" />
+    <Compile Include="Migrations\201312242122233_Cleanup unused field.Designer.cs">
+      <DependentUpon>201312242122233_Cleanup unused field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -502,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201312241804408_Fix reverse relationships.resx">
       <DependentUpon>201312241804408_Fix reverse relationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312242122233_Cleanup unused field.resx">
+      <DependentUpon>201312242122233_Cleanup unused field.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
