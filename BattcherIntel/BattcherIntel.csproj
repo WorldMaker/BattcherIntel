@@ -222,6 +222,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Controllers\MissionController.cs" />
     <Compile Include="Controllers\MissionSearchController.cs" />
@@ -290,11 +291,14 @@
     <Content Include="App\views\account\register.html" />
     <Content Include="App\views\account\registerExternal.html" />
     <Content Include="App\views\archive.html" />
+    <Content Include="App\views\mission.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\nprogress.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -306,6 +310,7 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="App_Readme\NProgressjs_README.md" />
     <Content Include="App_Readme\NProgressjs_LICENSE" />
+    <Content Include="Content\toastr.less" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -318,11 +323,15 @@
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\toastr.min.js.map" />
     <TypeScriptCompile Include="App\account\externalLoginProvider.ts" />
     <TypeScriptCompile Include="App\account\model.ts" />
     <TypeScriptCompile Include="App\account\security.ts" />
     <TypeScriptCompile Include="App\main.d.ts" />
     <TypeScriptCompile Include="App\svc\mission.ts" />
+    <TypeScriptCompile Include="App\svc\model.d.ts" />
     <TypeScriptCompile Include="App\util.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\addpassword.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\changepassword.ts" />
@@ -332,6 +341,7 @@
     <TypeScriptCompile Include="App\viewmodels\account\registerExternal.ts" />
     <TypeScriptCompile Include="App\viewmodels\account\removelogin.ts" />
     <TypeScriptCompile Include="App\viewmodels\archive.ts" />
+    <TypeScriptCompile Include="App\viewmodels\mission.ts" />
     <TypeScriptCompile Include="App\viewmodels\welcome.ts" />
     <Content Include="App\views\account\login.html" />
     <Content Include="App\views\detail.html" />
@@ -439,8 +449,11 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\moment\moment.amd.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\nprogress\NProgress.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.amd.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore-ko\underscore-ko.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
   </ItemGroup>

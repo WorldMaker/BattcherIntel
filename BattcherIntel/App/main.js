@@ -12,6 +12,7 @@
         'lodash.underscore': '../Scripts/lodash.underscore',
         'moment': '../Scripts/moment',
         'nprogress': '../Scripts/nprogress',
+        'toastr': '../Scripts/toastr',
         'underscore-ko': '../Scripts/underscore-ko'
     },
     map: {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace BattcherIntel.Models
         public string Name { get; set; }
 
         // Nav properties
+        [JsonIgnore]
         public virtual IEnumerable<Mission> Missions { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BattcherIntel.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,19 +21,26 @@ namespace BattcherIntel.Controllers
         private static Regex codeRegex = new Regex(@"\w+\d+", RegexOptions.Compiled);
         private static Regex secretRegex = new Regex(@"\w+ \w+ \w+ \w+ \w+\.", RegexOptions.Compiled);
         private BattcherIntelContext db = new BattcherIntelContext();
+        private UserManager<IdentityUser> uman;
+
+        public MissionSearchController()
+        {
+            uman = new UserManager<IdentityUser>(new UserStore<IdentityUser>(this.db));
+        }
 
         [HttpPost]
         public async Task<IHttpActionResult> Search(string query)
         {
             query = query.Trim();
+            var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
             if (codeRegex.IsMatch(query))
             {
                 var mission = await db.Missions.Include(m => m.Pack).Where(m => m.MissionCode == query).SingleOrDefaultAsync();
-                if (!mission.Unlocked.HasValue && mission.Agent.User == User.Identity && await VerifyUnlock(mission))
+                if (!mission.Unlocked.HasValue && mission.Agent.User.Id == dbuser.Id && await VerifyUnlock(mission))
                 {
                     return Ok(mission);
                 }
-                else if (!mission.IsArchived && mission.Agent.User == User.Identity)
+                else if (!mission.IsArchived && mission.Agent.User.Id == dbuser.Id)
                 {
                     return Ok(mission);
                 }
@@ -46,24 +55,24 @@ namespace BattcherIntel.Controllers
                 var mission = await db.Missions.Where(m => m.MissionSecret == query).SingleOrDefaultAsync();
                 if (mission.Unlocked.HasValue)
                 {
-                    if (!mission.Completed.HasValue && mission.Agent.User != User.Identity)
+                    if (!mission.Completed.HasValue && mission.Agent.User.Id != dbuser.Id)
                     {
                         mission.IsArchived = true;
                         var report = new Report
                         {
-                            Agent = await db.Agents.Where(a => a.User == User.Identity).FirstAsync(),
+                            Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).FirstAsync(),
                             Created = DateTime.UtcNow,
                             Mission = mission,
                         };
                         if (mission.TargetAgent.User == User)
                         {
                             mission.Completed = DateTime.UtcNow;
-                            report.Comments = string.Format(Properties.Resources.MissionCompleted, User.Identity.Name);
+                            report.Comments = string.Format(Properties.Resources.MissionCompleted, dbuser.UserName);
                             report.Type = ReportType.Completion;
                         }
                         else
                         {
-                            report.Comments = string.Format(Properties.Resources.MissionIntercepted, User.Identity.Name);
+                            report.Comments = string.Format(Properties.Resources.MissionIntercepted, dbuser.UserName);
                             report.Type = ReportType.Interception;
                         }
                         db.Reports.Add(report);
@@ -83,18 +92,20 @@ namespace BattcherIntel.Controllers
         {
             Contract.Requires(mission.Pack != null);
 
+            var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
+
             switch (mission.Pack.Name)
             {
                 case "base2014":
                     var unlockable = (int)Math.Floor((DateTime.Today - new DateTime(2013, 12, 25)).TotalDays / 7) + 1;
-                    var missions = await db.Missions.Where(m => m.Unlocked.HasValue && m.Agent.User == User.Identity).CountAsync();
+                    var missions = await db.Missions.Where(m => m.Unlocked.HasValue && m.Agent.User.Id == dbuser.Id).CountAsync();
                     if (missions < unlockable)
                     {
                         return true;
                     }
                     return false;
                 case "bday2014":
-                    var agent = await db.Agents.Where(a => a.User == User.Identity).SingleAsync();
+                    var agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleAsync();
                     var year = agent.Birthday.Month == 12 ? 2013 : 2014;
                     if (DateTime.Today == new DateTime(year, agent.Birthday.Month, agent.Birthday.Day))
                     {

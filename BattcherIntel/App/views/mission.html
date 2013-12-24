@@ -1,0 +1,16 @@
+﻿<h2 data-bind="text: missionCode">…</h2>
+
+<dl class="dl-horizontal">
+    <dt class="text-muted">Started</dt>
+    <dd class="text-muted" data-bind="text: unlocked().fromNow()">…</dd>
+    <!-- ko if: completed -->
+    <dt class="text-success">Completed</dt>
+    <dd class="text-success" data-bind="text: completed().fromNow()">…</dd>
+    <!-- /ko -->
+    <dt>Mission</dt>
+    <dd><strong data-bind="text: missionText">…</strong></dd>
+</dl>
+
+<div data-bind="foreach: reports">
+    <p data-bind="text: $data">…</p><!-- TODO -->
+</div>

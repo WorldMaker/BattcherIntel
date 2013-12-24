@@ -1,4 +1,6 @@
 ﻿using BattcherIntel.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +20,12 @@ namespace BattcherIntel.Controllers
     public class MissionController : ApiController
     {
         private BattcherIntelContext db = new BattcherIntelContext();
+        private UserManager<IdentityUser> uman;
+
+        public MissionController()
+        {
+            uman = new UserManager<IdentityUser>(new UserStore<IdentityUser>(this.db));
+        }
 
         // GET api/Mission
         public IQueryable<Mission> GetMissions()
@@ -29,7 +37,7 @@ namespace BattcherIntel.Controllers
         [ResponseType(typeof(Mission))]
         public async Task<IHttpActionResult> GetMissionByCode(string code)
         {
-            Mission mission = await db.Missions.Include(m => m.Reports)
+            Mission mission = await db.Missions
                 .Where(m => m.MissionCode == code)
                 .SingleOrDefaultAsync();
             if (mission == null || !mission.Unlocked.HasValue || (!mission.IsArchived && mission.Agent.User != User))

@@ -24,6 +24,7 @@ module.exports = function (grunt) {
                     "scripts/lodash.underscore.js",
                     "scripts/moment.js",
                     "scripts/nprogress.js",
+                    "scripts/toastr.js",
                     "scripts/underscore-ko.js"
                 ],
                 options: {
@@ -38,6 +39,7 @@ module.exports = function (grunt) {
                         'lodash.underscore': '../Scripts/lodash.underscore',
                         'moment': '../Scripts/moment',
                         'nprogress': '../Scripts/nprogress',
+                        'toastr': '../Scripts/toastr',
                         'underscore-ko': '../Scripts/underscore-ko'
                     },
                     map: {

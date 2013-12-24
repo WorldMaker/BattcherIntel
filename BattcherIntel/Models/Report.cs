@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace BattcherIntel.Models
         [Required]
         public virtual Agent Agent { get; set; }
         [Required]
+        [JsonIgnore]
         public virtual Mission Mission { get; set; }
     }
 }

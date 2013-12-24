@@ -3,6 +3,9 @@ export import router = require('plugins/router');
 import app = require('durandal/app');
 export import security = require('../account/security');
 import util = require('../util');
+import mission = require('../svc/mission');
+import ko = require('knockout');
+import toastr = require('toastr');
 
 // Mix-in for authorization requirement
 interface AuthorizedDurandalRouteConfiguration extends DurandalRouteConfiguration {
@@ -13,10 +16,17 @@ export var loggedIn = security.loggedIn;
 
 export var user = security.user;
 
+export var searchQuery = ko.observable<string>();
+
 export function search() {
-    //It's really easy to show a message box.
-    //You can add custom options too. Also, it returns a promise for the user's response.
-    app.showMessage('Search not yet implemented...');
+    mission.search(searchQuery()).then(m => router.navigate(new mission.MissionVM(m).detailsPage()))
+        .fail(e => {
+            if (e.message) {
+                toastr.error(e.message);
+            } else {
+                toastr.warning('Nothing was found.');
+            }
+        });
 }
 
 export function logout() {
@@ -53,6 +63,7 @@ export function activate() {
     router.map([
         { route: '', title: 'Welcome', moduleId: 'viewmodels/welcome', nav: true },
         { route: 'archive', moduleId: 'viewmodels/archive', nav: true, authorize: /agent/i },
+        { route: 'mission/:code', moduleId: 'viewmodels/mission', nav: false, authorize: /agent/i },
 
         // Accounts
         { route: 'account/login', title: 'Login', moduleId: 'viewmodels/account/login', nav: false },

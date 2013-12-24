@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BattcherIntel.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BattcherIntel.Controllers
 {
@@ -17,6 +19,12 @@ namespace BattcherIntel.Controllers
     public class ReportController : ApiController
     {
         private BattcherIntelContext db = new BattcherIntelContext();
+        private UserManager<IdentityUser> uman;
+
+        public ReportController()
+        {
+            uman = new UserManager<IdentityUser>(new UserStore<IdentityUser>(this.db));
+        }
 
         // GET api/Report
         public IQueryable<Report> GetReports()
@@ -81,6 +89,8 @@ namespace BattcherIntel.Controllers
                 return BadRequest(ModelState);
             }
 
+            var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
+            report.Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleAsync();
             report.Type = ReportType.Other;
             report.Created = DateTime.UtcNow;
 

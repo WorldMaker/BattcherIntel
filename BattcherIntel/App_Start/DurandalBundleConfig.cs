@@ -14,6 +14,7 @@ namespace BattcherIntel {
 		  .Include("~/Content/durandal.css")
           .Include("~/Content/starterkit.css")
           .Include("~/Content/nprogress.css")
+          .Include("~/Content/toastr.css")
         );
     }
 
