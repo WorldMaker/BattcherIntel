@@ -98,7 +98,7 @@ namespace BattcherIntel.Controllers
             {
                 case "base2014":
                     var unlockable = (int)Math.Floor((DateTime.Today - new DateTime(2013, 12, 25)).TotalDays / 7) + 1;
-                    var missions = await db.Missions.Where(m => m.Unlocked.HasValue && m.Agent.User.Id == dbuser.Id).CountAsync();
+                    var missions = await db.Missions.Where(m => m.Unlocked.HasValue && m.Agent.User.Id == dbuser.Id && m.Pack.Name == "base2014").CountAsync();
                     if (missions < unlockable)
                     {
                         return true;
