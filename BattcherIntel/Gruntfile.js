@@ -22,6 +22,8 @@ module.exports = function (grunt) {
                     "scripts/knockout-3.0.0.js",
                     "scripts/knockout.validation.js",
                     "scripts/lodash.underscore.js",
+                    "scripts/markdowndeeplib.min.js",
+                    "scripts/markdowndeep-ko.js",
                     "scripts/moment.js",
                     "scripts/nprogress.js",
                     "scripts/toastr.js",
@@ -38,6 +40,8 @@ module.exports = function (grunt) {
                         'knockout.validation': '../Scripts/knockout.validation',
                         'lodash.underscore': '../Scripts/lodash.underscore',
                         'moment': '../Scripts/moment',
+                        'markdowndeep': '../Scripts/markdowndeeplib.min',
+                        'markdowndeep-ko': '../Scripts/markdowndeep-ko',
                         'nprogress': '../Scripts/nprogress',
                         'toastr': '../Scripts/toastr',
                         'underscore-ko': '../Scripts/underscore-ko'
@@ -51,6 +55,10 @@ module.exports = function (grunt) {
                         'bootstrap': ['jquery'],
                         'jquery': {
                             exports: "$"
+                        },
+                        'markdowndeep': {
+                            deps: ['jquery'],
+                            exports: 'MarkdownDeep'
                         },
                         'nprogress': {
                             deps: ['jquery'],

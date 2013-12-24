@@ -1,3 +1,4 @@
+/// <amd-dependency path="markdowndeep-ko"/>
 import ko = require('knockout');
 import mission = require('../svc/mission');
 import report = require('../svc/report');
@@ -30,6 +31,7 @@ class MissionDetailsVM extends mission.MissionVM {
         }
         report.fileReport(r).then(result => {
             this.isFilingReport(false);
+            this.reportComments('');
             this.reports.push(new report.ReportVM(result));
         }).fail(e => {
                 this.isFilingReport(false);
