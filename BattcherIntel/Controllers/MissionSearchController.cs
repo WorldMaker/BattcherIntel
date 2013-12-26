@@ -36,8 +36,10 @@ namespace BattcherIntel.Controllers
             if (codeRegex.IsMatch(query))
             {
                 var mission = await db.Missions.Include(m => m.Pack).Where(m => m.MissionCode == query).SingleOrDefaultAsync();
-                if (!mission.Unlocked.HasValue && mission.Agent.User.Id == dbuser.Id && await VerifyUnlock(mission))
+                if (!mission.Unlocked.HasValue && mission.Agent.User.Id == dbuser.Id && await VerifyUnlock(mission, dbuser))
                 {
+                    mission.Unlocked = DateTime.UtcNow;
+                    await db.SaveChangesAsync();
                     return Ok(mission);
                 }
                 else if (!mission.IsArchived && mission.Agent.User.Id == dbuser.Id)
@@ -88,11 +90,9 @@ namespace BattcherIntel.Controllers
             }
         }
 
-        private async Task<bool> VerifyUnlock(Mission mission)
+        private async Task<bool> VerifyUnlock(Mission mission, IdentityUser dbuser)
         {
             Contract.Requires(mission.Pack != null);
-
-            var dbuser = await uman.FindByIdAsync(User.Identity.GetUserId());
 
             switch (mission.Pack.Name)
             {
