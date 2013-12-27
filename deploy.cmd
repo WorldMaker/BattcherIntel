@@ -87,6 +87,7 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   pushd "%DEPLOYMENT_TEMP%"
 )
 
+call npm config set strict-ssl false # TODO: How long should this last?
 call npm install -g grunt-cli
 call npm install --saveDev
 SET GRUNT_CMD=node "%appdata%\npm\node_modules\grunt-cli\bin\grunt"
