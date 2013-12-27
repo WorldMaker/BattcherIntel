@@ -10,7 +10,7 @@
         'knockout': '../Scripts/knockout-3.0.0',
         'knockout.validation': '../Scripts/knockout.validation',
         'lodash.underscore': '../Scripts/lodash.underscore',
-        'markdowndeep': '../Scripts/markdowndeeplib.min',
+        'markdowndeep': '../Scripts/markdowndeep',
         'markdowndeep-ko': '../Scripts/markdowndeep-ko',
         'moment': '../Scripts/moment',
         'nprogress': '../Scripts/nprogress',
@@ -27,10 +27,6 @@
         'bootstrap': ['jquery'],
         'jquery': {
             exports: "$"
-        },
-        'markdowndeep': {
-            deps: ['jquery'],
-            exports: 'MarkdownDeep'
         },
         'nprogress': {
             deps: ['jquery'],

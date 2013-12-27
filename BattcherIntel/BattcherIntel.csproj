@@ -338,6 +338,7 @@
     <Content Include="Scripts\MarkdownDeep License.txt" />
     <Content Include="Scripts\MarkdownDeep Quick Reference.txt" />
     <Content Include="Scripts\markdowndeep-ko.js" />
+    <Content Include="Scripts\MarkdownDeep.js" />
     <Content Include="Scripts\MarkdownDeepLib.min.js" />
     <Content Include="Scripts\mdd_ajax_loader.gif" />
     <Content Include="Scripts\mdd_gripper.png" />
