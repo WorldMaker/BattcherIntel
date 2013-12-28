@@ -42,7 +42,7 @@ namespace BattcherIntel.Controllers
                     await db.SaveChangesAsync();
                     return Ok(mission);
                 }
-                else if (!mission.IsArchived && mission.Agent.User.Id == dbuser.Id)
+                else if (mission.Unlocked.HasValue && !mission.IsArchived && mission.Agent.User.Id == dbuser.Id)
                 {
                     return Ok(mission);
                 }
@@ -107,7 +107,7 @@ namespace BattcherIntel.Controllers
                 case "bday2014":
                     var agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).SingleAsync();
                     var year = agent.Birthday.Month == 12 ? 2013 : 2014;
-                    if (DateTime.Today == new DateTime(year, agent.Birthday.Month, agent.Birthday.Day))
+                    if (DateTime.Today >= new DateTime(year, agent.Birthday.Month, agent.Birthday.Day))
                     {
                         return true;
                     }
