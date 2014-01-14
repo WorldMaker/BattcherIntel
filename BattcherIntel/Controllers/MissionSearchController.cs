@@ -55,7 +55,7 @@ namespace BattcherIntel.Controllers
             else if (secretRegex.IsMatch(query))
             {
                 var mission = await db.Missions.Where(m => m.MissionSecret == query).SingleOrDefaultAsync();
-                if (mission.Unlocked.HasValue)
+                if (mission != null && mission.Unlocked.HasValue)
                 {
                     if (!mission.Completed.HasValue && mission.Agent.User.Id != dbuser.Id)
                     {

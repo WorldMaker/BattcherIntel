@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace BattcherIntel.Models
         public string MissionCode { get; set; }
         public string MissionText { get; set; }
         [MaxLength(1023)]
+        [JsonIgnore]
         public string MissionSecret { get; set; }
         public DateTime? Unlocked { get; set; }
         public DateTime? Completed { get; set; }
