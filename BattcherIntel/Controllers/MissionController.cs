@@ -28,9 +28,21 @@ namespace BattcherIntel.Controllers
         }
 
         // GET api/Mission
-        public IQueryable<Mission> GetMissions()
+        public IQueryable GetMissions()
         {
-            return db.Missions.Where(m => m.IsArchived);
+            return db.Missions.Where(m => m.IsArchived)
+                .Select(m => new
+                {
+                    m.Agent,
+                    m.Completed,
+                    m.Id,
+                    m.IsArchived,
+                    m.MissionCode,
+		    m.MissionText,
+                    m.Pack,
+                    m.TargetAgent,
+                    m.Unlocked,
+                });
         }
 
         // GET api/Mission/5
