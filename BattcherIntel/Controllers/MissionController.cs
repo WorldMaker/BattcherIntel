@@ -30,19 +30,21 @@ namespace BattcherIntel.Controllers
         // GET api/Mission
         public IQueryable GetMissions()
         {
-            return db.Missions.Where(m => m.IsArchived)
+            return db.Missions
+                .Where(m => m.IsArchived)
                 .Select(m => new
                 {
-                    m.Agent,
+                    Agent = new { Username = m.Agent.User.UserName },
                     m.Completed,
                     m.Id,
                     m.IsArchived,
                     m.MissionCode,
 		    m.MissionText,
                     m.Pack,
-                    m.TargetAgent,
+                    TargetAgent = new { Username = m.TargetAgent.User.UserName },
                     m.Unlocked,
-                });
+                })
+                .OrderByDescending(m => m.Completed);
         }
 
         // GET api/Mission/5

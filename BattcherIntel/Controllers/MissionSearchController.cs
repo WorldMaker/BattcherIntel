@@ -57,26 +57,35 @@ namespace BattcherIntel.Controllers
                 var mission = await db.Missions.Where(m => m.MissionSecret == query).SingleOrDefaultAsync();
                 if (mission != null && mission.Unlocked.HasValue)
                 {
+                    var report = new Report
+                    {
+                        Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).FirstAsync(),
+                        Created = DateTime.UtcNow,
+                        Mission = mission,
+                    };
                     if (!mission.Completed.HasValue && mission.Agent.User.Id != dbuser.Id)
                     {
                         mission.IsArchived = true;
-                        var report = new Report
-                        {
-                            Agent = await db.Agents.Where(a => a.User.Id == dbuser.Id).FirstAsync(),
-                            Created = DateTime.UtcNow,
-                            Mission = mission,
-                        };
                         if (mission.TargetAgent == null || mission.TargetAgent.User.Id == dbuser.Id)
                         {
                             mission.Completed = DateTime.UtcNow;
                             report.Comments = string.Format(Properties.Resources.MissionCompleted, dbuser.UserName);
                             report.Type = ReportType.Completion;
+                            db.Reports.Add(report);
+                            await db.SaveChangesAsync();
                         }
-                        else
+                        else if (!mission.Reports.Any(r => r.Agent.User.Id == dbuser.Id && r.Type == ReportType.Interception))
                         {
                             report.Comments = string.Format(Properties.Resources.MissionIntercepted, dbuser.UserName);
                             report.Type = ReportType.Interception;
+                            db.Reports.Add(report);
+                            await db.SaveChangesAsync();
                         }
+                    }
+                    else if (mission.Completed.HasValue && mission.TargetAgent == null && !mission.Reports.Any(r => r.Agent.User.Id == dbuser.Id && r.Type == ReportType.Completion))
+                    {
+                        report.Comments = string.Format(Properties.Resources.MissionCompleted, dbuser.UserName);
+                        report.Type = ReportType.Completion;
                         db.Reports.Add(report);
                         await db.SaveChangesAsync();
                     }
