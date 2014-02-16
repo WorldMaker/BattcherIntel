@@ -34,21 +34,9 @@ class ManageViewModel {
     message = ko.observable();
     errors = ko.observableArray();
 
-    changePassword = ko.computed(() => {
-        if (!this.hasLocalPassword()) {
-            return null;
-        }
+    changePassword = new ChangePasswordViewModel(this, this.userName);
 
-        return new ChangePasswordViewModel(this, this.userName());
-    });
-
-    setPassword = ko.computed(() => {
-        if (this.hasLocalPassword()) {
-            return null;
-        }
-
-        return new SetPasswordViewModel(this);
-    });
+    setPassword = new SetPasswordViewModel(this);
 
     hasExternalLogin = ko.computed(() => {
         return this.externalLoginProviders().length > 0;

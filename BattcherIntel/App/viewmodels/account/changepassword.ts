@@ -4,7 +4,7 @@ import ko = require('knockout');
 
 class ChangePasswordViewModel {
     constructor(private parent, name) {
-        this.name(name);
+        this.name = name;
     }
 
     // Private operations
