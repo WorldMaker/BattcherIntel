@@ -1,5 +1,10 @@
 ﻿<h2>Mission Archive</h2>
 <p data-bind="if: missions().length < 1">No missions have been archived yet.</p>
-<ul data-bind="foreach: missions">
-    <li><a data-bind="attr: { href: detailsPage }">Completed <span data-bind="text: completed().fromNow()">…</span>, <strong data-bind="text: missionCode">…</strong> for <em data-bind="text: agent().username">…</em>: <span data-bind="	text: missionText">…</span> [Started <span data-bind="	text: unlocked().fromNow()">…</span>]</a></li>
-</ul>
+<div class="list-group" data-bind="foreach: missions">
+    <a class="list-group-item" data-bind="attr: { href: detailsPage }">
+            <span class="text-muted pull-right" data-bind="text: agent().username">…</span>
+            <h4 data-bind="text: missionCode">…</h4>
+            <div data-bind="text: missionText">…</div>
+            <div class="text-muted">Completed <span data-bind="text: completed().fromNow()">…</span> [Started <span data-bind="	text: unlocked().fromNow()">…</span>]</div>
+    </a>
+</div>
