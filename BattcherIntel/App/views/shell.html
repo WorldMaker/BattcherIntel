@@ -33,7 +33,7 @@
                             <label for="search" class="sr-only">Search</label>
                             <input id="search" type="search" class="form-control" placeholder="Mission Code or Secret" data-bind="value: searchQuery">
                         </div>
-                        <button type="submit" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default">Unlock <!-- ko if: loggedIn --><span class="badge" data-bind="text: unlockable() || ''">…</span><!-- /ko --></button>
                     </form>
                     <!--<p class="loader navbar-text" data-bind="css: { active: router.isNavigating }">
                         <i class="fa fa-spinner fa-2x fa-spin"></i>

@@ -18,23 +18,33 @@ export var user = security.user;
 
 export var searchQuery = ko.observable<string>();
 
+export var unlockable = ko.observable<number>();
+
+export function updateUnlockBadge() {
+        return mission.unlockBadge().then(count => unlockable(count))
+                .fail(e => toastr.error(e.message, "Unlockable Mission Counting Error"));
+}
+
 export function search() {
-    mission.search(searchQuery()).then(m => router.navigate(new mission.MissionVM(m).detailsPage()))
-        .fail(e => {
-            if (e.message) {
-                toastr.error(e.message);
-            } else {
-                toastr.warning('Nothing was found.');
-            }
-        });
+        mission.search(searchQuery()).then(m => router.navigate(new mission.MissionVM(m).detailsPage()))
+                .fail(e => {
+                        if (e.message) {
+                                toastr.error(e.message);
+                        } else {
+                                toastr.warning('Nothing was found.');
+                        }
+                })
+                .then(() => updateUnlockBadge());
 }
 
 export function logout() {
-    return security.logoff();
+    return security.logoff().then(() => updateUnlockBadge());
 }
 
 export function activate() {
-    util.subscribeProgress(router.isNavigating);
+        util.subscribeProgress(router.isNavigating);
+
+        user.subscribe(() => updateUnlockBadge());
 
     // If the route has the authorize flag and the user is not logged in => navigate to login view                                
     router.guardRoute = function (instance, instruction: DurandalRouteInstruction) {
@@ -63,6 +73,7 @@ export function activate() {
     router.map([
         { route: '', title: 'Welcome', moduleId: 'viewmodels/welcome', nav: true },
         { route: 'archive', moduleId: 'viewmodels/archive', nav: true, authorize: /agent/i },
+        { route: 'stats', moduleId: 'viewmodels/stats', nav: true, authorize: /agent/i },
         { route: 'mission/:code', moduleId: 'viewmodels/mission', nav: false, authorize: /agent/i },
 
         // Accounts
@@ -72,5 +83,14 @@ export function activate() {
         { route: 'account/registerExternal', title: 'Register', moduleId: 'viewmodels/account/registerExternal', nav: false },
     ]).buildNavigationModel();
 
-    return router.activate();
+        var update: JQueryPromise<any>;
+        if (security.loggedIn()) {
+                update = updateUnlockBadge();
+        }
+        else {
+                update = $.Deferred().resolve();
+        }
+
+
+    return update.then(router.activate);
 }

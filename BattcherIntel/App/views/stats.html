@@ -1,0 +1,15 @@
+﻿<div data-bind="with: stats">
+        <h2>Game 2014 Week <span data-bind="text: week">…</span></h2>
+        <div class="list-group" data-bind="foreach: agents">
+                <div class="list-group-item">
+                        <h3>Agent <span data-bind="text: username">…</span></h3>
+                        <div><span data-bind="text: completed">…</span>/<span data-bind="text: unlocked">…</span> completed missions</div>
+                        <!-- ko if: secretsCompleted --><div><span data-bind="text: secretsCompleted">…</span> successful secrets</div><!-- /ko -->
+                        <!-- ko if: secretsIntercepted --><div class="text-warning"><span data-bind="text: secretsIntercepted">…</span> secrets intercepted</div><!-- /ko -->
+                        <!-- ko if: completed -->
+                        <div>Slowest mission took <span data-bind="text: slowest().humanize()">…</span></div>
+                        <div>Fastest mission took <span data-bind="text: fastest().humanize()">…</span></div>
+                        <!-- /ko -->
+                </div>
+        </div>
+</div>

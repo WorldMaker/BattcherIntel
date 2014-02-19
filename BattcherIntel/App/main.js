@@ -35,7 +35,7 @@
     }
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'account/security'],  function (system, app, viewLocator, security) {
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'account/security', 'plugins/widget'],  function (system, app, viewLocator, security, widget) {
     //>>excludeStart("build", true);
     system.debug(true);
     //>>excludeEnd("build");
@@ -47,6 +47,7 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'account/secu
         //dialog: true,
         widget: true
     });
+    widget.registerKind('unlockBadge');
 
     app.start().then(function() {
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.

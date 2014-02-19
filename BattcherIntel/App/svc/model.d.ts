@@ -35,3 +35,19 @@ interface Dashboard {
     missions: Mission[];
     reports: { report: Report; missionCode: string }[];
 }
+
+interface AgentStats {
+        userId: number;
+        username: string;
+        completed: number;
+        unlocked: number;
+        secretsCompleted: number;
+        secretsIntercepted: number;
+        slowest: string;
+        fastest: string;
+}
+
+interface Stats {
+        week: number;
+        agents: AgentStats[];
+}

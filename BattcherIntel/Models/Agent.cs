@@ -21,6 +21,17 @@ namespace BattcherIntel.Models
         [JsonIgnore]
         public virtual IdentityUser User { get; set; }
 
+        [JsonIgnore]
+        [InverseProperty("Agent")]
+        public virtual ICollection<Mission> Missions { get; set; }
+
+        [JsonIgnore]
+        [InverseProperty("TargetAgent")]
+        public virtual ICollection<Mission> TargettedMissions { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Report> Reports { get; set; }
+
         [NotMapped]
         public string Username
         {

@@ -64,3 +64,15 @@ export function dashboard() {
         headers: security.getSecurityHeaders(),
     }).then<Dashboard>(result => result, util.failAsJson);
 }
+
+export function unlockBadge() {
+        return $.ajax('/api/unlockbadge/', {
+                headers: security.getSecurityHeaders(),
+        }).then<number>(result => result, util.failAsJson);
+}
+
+export function stats() {
+        return $.ajax('/api/stats/', {
+                headers: security.getSecurityHeaders(),
+        }).then<Stats>(result => result, util.failAsJson);
+}
